@@ -4,10 +4,24 @@
       <h1>Je mets au défi la vie.</h1>
     </div>
     <div class="header-right">
+      <div class="btn-wrapper">
+        <a href="#" class="btn twitter">
+          <!-- ここに<span>タグを追加しましょう -->
+          <span class = "fa fa-twitter" aria-hidden="true"></span>
+          Twitterで登録
+        </a>
+      </div>
     </div>
   </div>
 </header>
 <div class="contents">
+  <div class="contents__list">
+    <ul class="content__list">
+      <li class="content__list__icon"><%= link_to "ホーム", "/"%></li>
+      <li class="content__list__icon"><%= link_to "プロフィール", "/"%></li>
+      <li class="content__list__icon"><%= link_to "ブログ", "/"%></li>
+    </ul>
+  </div>
   <%= image_tag '/10213.jpg', class: "contents__image" %>
   <div class="content">
     <div class="content__left"></div>
