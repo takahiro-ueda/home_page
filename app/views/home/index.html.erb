@@ -9,18 +9,19 @@
   </div>
 </header>
 <div class="contents">
-  <%= image_tag '/10213.jpg', class: "contents__image" %>
-  <section class="contents__list">
-    <ul class="content__list">
-      <li class="content__list__icon"><a class="fa fa-home" href="/">ホーム</a>
-      <li class="content__list__icon"><a class="fa fa-id-card" href="/">プロフィール</a>
-      <li class="content__list__icon"><a class="fa fa-comment" href="/">ブログ</a>
-    </ul>
-  </section>
   <div class="content">
-    <div class="content__left"></div>
-    <div class="content__right">
-    
+    <%= image_tag '/10213.jpg', class: "content__image" %>
+    <div class="content__header">
+      <ul class="content__header__list">
+        <li class="content__header__list__icon"><a href="/">ホーム</a></li>
+        <li class="content__header__list__icon"><a href="/">プロフィール</a></li>
+        <li class="content__header__list__icon"><a href="/">制作概要</a></li>
+        <li class="content__header__list__icon"><a href="/">ブログ</a></li>
+      </ul>
+    </div>
+    <div class="content__main">
+      <div class="content__main__left"></div>
+      <div class="content__main__right"></div>
     </div>
   </div>
 </div>
@@ -31,12 +32,14 @@
       <h2 class="pcFooter__footer__contents__content__head">管理者</h2>
       <ul>
         <li><a href="#">プロフィール</a></li>
+        <li><a href="#">制作概要</a></li>
       </ul>
     </li>
     <li class="pcFooter__footer__contents__content">
       <h2 class="pcFooter__footer__contents__content__head">ブログ</h2>
       <ul>
-        <li><a href="#">カテゴリー一覧</a></li>
+        <li><a href="#">プログラミング日記</a></li>
+        <li><a href="#">ランニング日記</a></li>
       </ul>
     </li>
     <li class="pcFooter__footer__contents__content">
@@ -48,7 +51,7 @@
     </li>
   </ul>
   </div>
-  <p>© All rights reserved by webcampnavi.</p>
+  <p>© Practice. 2020.</p>
   </footer>
   <%# <div class="footer__icon">
     <h1>Je mets au défi la vie.</h1>
@@ -65,4 +68,3 @@
   </ul>
   <p>© All rights reserved by webcampnavi.</p>
   </div> %>
-
