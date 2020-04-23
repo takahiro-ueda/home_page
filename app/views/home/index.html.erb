@@ -4,27 +4,65 @@
       <h1>Je mets au défi la vie.</h1>
     </div>
     <div class="header-right">
-      <div class="btn-wrapper">
-        <a href="#" class="btn twitter">
-          <!-- ここに<span>タグを追加しましょう -->
-          <span class = "fa fa-twitter" aria-hidden="true"></span>
-          Twitterで登録
-        </a>
-      </div>
+      
     </div>
   </div>
 </header>
 <div class="contents">
-  <div class="contents__list">
-    <ul class="content__list">
-      <li class="content__list__icon"><%= link_to "ホーム", "/"%></li>
-      <li class="content__list__icon"><%= link_to "プロフィール", "/"%></li>
-      <li class="content__list__icon"><%= link_to "ブログ", "/"%></li>
-    </ul>
-  </div>
   <%= image_tag '/10213.jpg', class: "contents__image" %>
+  <section class="contents__list">
+    <ul class="content__list">
+      <li class="content__list__icon"><a class="fa fa-home" href="/">ホーム</a>
+      <li class="content__list__icon"><a class="fa fa-id-card" href="/">プロフィール</a>
+      <li class="content__list__icon"><a class="fa fa-comment" href="/">ブログ</a>
+    </ul>
+  </section>
   <div class="content">
     <div class="content__left"></div>
-    <div class="content__right"></div>
+    <div class="content__right">
+    
+    </div>
   </div>
 </div>
+<footer class="pcFooter">
+  <div class="pcFooter__footer">
+  <ul class="pcFooter__footer__contents">
+    <li class="pcFooter__footer__contents__content">
+      <h2 class="pcFooter__footer__contents__content__head">管理者</h2>
+      <ul>
+        <li><a href="#">プロフィール</a></li>
+      </ul>
+    </li>
+    <li class="pcFooter__footer__contents__content">
+      <h2 class="pcFooter__footer__contents__content__head">ブログ</h2>
+      <ul>
+        <li><a href="#">カテゴリー一覧</a></li>
+      </ul>
+    </li>
+    <li class="pcFooter__footer__contents__content">
+      <h2 class="pcFooter__footer__contents__content__head">SNS</h2>
+      <ul>
+        <li><a class="fa fa-github" href="https://github.com/takahiro-ueda">GitHub</a></li>
+        <li><a a class="fa fa-twitter" href="https://twitter.com/home">Twitter</a></li>
+      </ul>
+    </li>
+  </ul>
+  </div>
+  <p>© All rights reserved by webcampnavi.</p>
+  </footer>
+  <%# <div class="footer__icon">
+    <h1>Je mets au défi la vie.</h1>
+    <a class="fa fa-github" href="#">GitHub</a>
+    <a class="fa fa-twitter" href="#">Twitter</a>
+    <a class="fa fa-home" href="#">Facebook</a>
+  </div>
+  <div class="footer__menu">
+  <ul class="footer__menu__list">
+    <li class="footer__menu__icon">home ｜</li>
+    <li class="footer__menu__icon">about ｜</li>
+    <li class="footer__menu__icon">service ｜</li>
+    <li class="footer__menu__icon">Contact Us</li>
+  </ul>
+  <p>© All rights reserved by webcampnavi.</p>
+  </div> %>
+
