@@ -11,16 +11,67 @@ header {
   background-color:white;
   color: black;
   margin: 0 auto;
-  &__left {
-    line-height: 100px;
-  }
-  &__right {
-
+  display: flex;
+  .header__content {
+    display: flex;
+    padding: 0 50px;
+    width:100%;
+    &__left {
+      width:30%;
+      font-size: 30px;
+      line-height: 100px;
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      &__title {
+        font-family: 'Caveat', cursive;
+      }
+    }
+    &__right {
+      width:70%;
+      display: flex;
+      &__icon {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        font-size: 30px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        padding-right: 50px;
+        display:flex;
+        margin: auto;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Nunito', sans-serif;
+        color: transparent;
+        letter-spacing: 0.1em;
+        text-shadow:
+          0 0 2px rgba(204, 208, 212,0.9),
+          0 15px 25px rgba(0, 0, 0, 0.3),
+          0 -2px 3px rgba(0, 0, 0, 0.1),
+          0 -5px 10px rgba(255, 255, 255, 0.5),
+          0 5px 10px rgba(0, 0, 0, 0.3),
+          0 3px 4px rgba(255, 255, 255, 0.2),
+          0 0 20px rgba(255, 255, 255, 0.45);
+        a {
+          color: white;
+          margin-right: 30px;
+          text-decoration: none;
+          transition: 1.0s ;
+        }
+        a:hover {
+          color: black ;
+        }
+      }
+    }
   }
 }
 .contents {
   width: 100%;
   .content {
+    width: 100%;
     &__image {
       width: 100%;
       height: 400px;
@@ -46,10 +97,8 @@ header {
         font-size: 20px;
         border-width: 0 1px;
         line-height: 50px;
-        
         &__icon{
           width: calc(1 / 4 * 100%);
-          // margin: 0 50px 15px;
           font-weight: bold;
           border-left: 1px solid #333;
           border-right: 1px solid #333;
@@ -58,44 +107,19 @@ header {
     }
     &__main {
       height: 1000px;
+      width: 100%;
+
       &__left {
-        width:70vh;
+        width:70%;
         background-color: lightblue;
       }
       &__right {
-        width:30vh;
+        width:30%;
+        border-left: 1px solid #333;
       }
     }  
   }
 }
-// footer{
-//   width: 100%;
-//   height: 200px;
-//   background-color: black;
-//   color: white;
-//   text-align: center;
-//   padding: 30px;
-//   &__icon {
-//     display:flex;
-//     &__twitter {
-//       background-color: #55acee;
-//       color: white;
-//       display: inline-block;
-//       opacity: 0.8;
-//       border-radius: 4px;
-//     }
-//   }
-//   &__menu {
-//     display: flex;
-    
-//     &__list {
-//       display: flex;
-//     }
-//     &__icon {
-//       list-style:none;
-//     }
-//   }
-// }
 .pcFooter{
   color: white;
   width: 100%;

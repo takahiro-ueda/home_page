@@ -1,10 +1,20 @@
 <header>
-  <div class="container">
-    <div class="header-left">
-      <h1>Je mets au défi la vie.</h1>
+  <div class="header__content">
+    <div class="header__content__left">
+      <%= link_to "Je mets au défi la vie.", '/', class: "header__content__left" %>
     </div>
-    <div class="header-right">
-      
+    <div class="header__content__right">
+      <div class="header__content__right__icon">
+        <%= link_to("/") do %>
+          <%= fa_icon("home") %>
+        <% end %>
+        <%= link_to("https://twitter.com/home") do %>
+          <%= fa_icon("twitter") %>
+        <% end %>
+        <%= link_to("https://github.com/takahiro-ueda") do %>
+          <%= fa_icon("github") %>
+        <% end %>
+      </div>
     </div>
   </div>
 </header>
