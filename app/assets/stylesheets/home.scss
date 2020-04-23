@@ -108,14 +108,42 @@ header {
     &__main {
       height: 1000px;
       width: 100%;
-
+      display: flex;
+      padding: 20px 50px;
       &__left {
-        width:70%;
+        width: 70%;
+        display: flex;
         background-color: lightblue;
       }
       &__right {
-        width:30%;
+        display: flex;
+        width: 30%;
         border-left: 1px solid #333;
+        
+        &__side {
+          margin: 0 auto;
+          display: flex;
+          
+          &__list {
+            &__menu {
+              border-bottom: solid 0.1px #e0e0e0;
+              &__image {
+                height: 100px;
+                width: 100px;
+                size: 12px;
+                a {
+                  padding-left: 20px;
+                }
+              }
+            }
+            ul {
+              margin-bottom: 50px;
+            }
+            li {
+              list-style: square;
+            }
+          }
+        }
       }
     }  
   }
