@@ -5,9 +5,6 @@
     </div>
     <div class="header__content__right">
       <div class="header__content__right__icon">
-        <%= link_to("/") do %>
-          <%= fa_icon("home") %>
-        <% end %>
         <%= link_to("https://twitter.com/home") do %>
           <%= fa_icon("twitter") %>
         <% end %>
@@ -30,29 +27,44 @@
       </ul>
     </div>
     <div class="content__main">
-      <div class="content__main__left"></div>
+      <div class="content__main__left">
+        <div class="content__main__left__header">
+        <h2>新着投稿</h2>
+        </div>
+      </div>
       <div class="content__main__right">
         <ul class="content__main__right__side">
           <li class="content__main__right__side__list">
-            <h2 class="content__main__right__side__list__menu">管理者</h2>
+            <h2 class="content__main__right__side__list__menu">作成者</h2>
             <ul>
               <li>
                 <img src="/line_743968890967290.jpg" alt="staff1" class="content__main__right__side__list__menu__image">
                 <h4 class="stylist-name">
                 植田　孝啓（うえだ　たかひろ）<br>
+                1996/04/25 (24歳)<br>
+                未経験からプログラミングを学習<br>
+                しています<br>
+                日々の積み上げを記録していき<br>
+                たいと思います<br>
+                よろしくお願いします！！！
                 </h4>
               </li>
             </ul>
-            <h2 class="content__main__right__side__list__menu">ブログ</h2>
+            <h2 class="content__main__right__side__list__menu">カテゴリー一覧</h2>
             <ul>
               <li><a href="#">プログラミング日記</a></li>
               <li><a href="#">ランニング日記</a></li>
+            </ul>
+            <h2 class="content__main__right__side__list__menu">個人開発アプリ</h2>
+            <ul>
+              <li><a href="https://ancient-wave-25450.herokuapp.com/users/sign_in">家計簿アプリ(Balance Sheet)</a></li>
             </ul>
             <h2 class="content__main__right__side__list__menu">SNS</h2>
             <ul>
               <li><a class="fa fa-github" href="https://github.com/takahiro-ueda">GitHub</a></li>
               <li><a a class="fa fa-twitter" href="https://twitter.com/home">Twitter</a></li>
             </ul>
+            <iframe src="https://calendar.google.com/calendar/embed?src=pt25ue%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="400" height="300" frameborder="0" scrolling="no"></iframe>
           </li>
         </ul>
       </div>
@@ -60,7 +72,7 @@
   </div>
 </div>
 <footer class="pcFooter">
-  <div class="pcFooter__footer">
+  <%# <div class="pcFooter__footer">
   <ul class="pcFooter__footer__contents">
     <li class="pcFooter__footer__contents__content">
       <h2 class="pcFooter__footer__contents__content__head">管理者</h2>
@@ -83,7 +95,7 @@
         <li><a a class="fa fa-twitter" href="https://twitter.com/home">Twitter</a></li>
       </ul>
     </li>
-  </ul>
-  </div>
-  <p>© Practice. 2020.</p>
+  </ul> %>
+  <%# </div> %>
+  <p>© Tree blog. 2020.4~</p>
 </footer>
