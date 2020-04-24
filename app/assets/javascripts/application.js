@@ -12,5 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
+
+$(function(){
+  $('.dropdown li.hover').hover(function(){
+      $(this).children('ul').show();
+  }, function(){
+      $(this).children('ul').hide();
+  });
+});
