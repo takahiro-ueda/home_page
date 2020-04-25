@@ -30,6 +30,23 @@
       <div class="content__main__left">
         <div class="content__main__left__header">
         <h2>新着投稿</h2>
+        <% @posts.first(1).each do |post| %>
+          <div class="blog__content">
+            <div class="blog__content__left">
+              <div class="blog__content__left__image"></div>
+            </div>
+            <div class="blog__content__right">
+              <div class="blog__content__right__top">
+                <%= link_to post.title, post_path(post.id), class: "blog__content__right__top__title" %>
+              </div>
+              <div class="blog__content__right__bottom">
+                <div class="blog__content__right__bottom__date">
+                  <%= post.created_at %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
         </div>
       </div>
       <div class="content__main__right">
