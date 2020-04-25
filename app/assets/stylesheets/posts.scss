@@ -1,7 +1,7 @@
 body{
   background-color: #f6f6f6;
   min-width: 650px;
-  .header{
+  .blog__header{
     height: 56px;
     width: 100%;
     padding: 0 150px;
@@ -12,13 +12,13 @@ body{
     &__title{
       font-size: 30px;
       line-height: 56px;
-      &--text{
+      &__text{
         text-decoration: none;
         color: #fff;
       }
     }
     &__right{
-      &--btn{
+      &__btn{
         text-decoration: none;
         line-height: 56px;
         color: #fff;
@@ -26,19 +26,19 @@ body{
       }
     }
   }
-  .contents{
+  .blog__contents{
     margin: 30px auto 0;
     background-color: #fff;
-    height: 600px;
+    height: 700px;
     width: 70%;
     overflow: scroll;
-    .content{
+    .blog__content{
       padding: 10px;
       border-bottom: 1px solid #f6f6f6;
       display: flex;
       &__left{
         padding-right: 20px;
-        &--image{
+        &__image{
           height: 55px;
           width: 55px;
           border: solid 1px;
@@ -49,7 +49,7 @@ body{
         &__top{
           font-size: 20px;
           font-weight: bold;
-          &--title{
+          &__title{
             text-decoration: none;
             color: #000000;
           }
@@ -58,13 +58,13 @@ body{
           font-size: 15px;
           color: #999;
           display: flex;
-          &--userName{
-            &--btn{
-              text-decoration: none;
-              color: #999;
-            }
-          }
-          &--date{
+//           &--userName{
+//             &--btn{
+//               text-decoration: none;
+//               color: #999;
+//             }
+          // }
+          &__date{
             margin-left: 20px;
           }
         }
@@ -141,7 +141,7 @@ body{
       margin: 15px auto 0;
     }
   }
-  .user{
-    padding: 15px 30px;
-  }
+//   .user{
+//     padding: 15px 30px;
+  // }
 }

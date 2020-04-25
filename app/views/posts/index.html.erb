@@ -1,27 +1,27 @@
-<% @posts.each do |post| %>
-  <div class="content">
-    <div class="content__left">
-      <div class="content__left--image"></div>
-    </div>
-    <div class="content__right">
-      <div class="content__right__top">
-        <%= post.title %>
+<header class="blog__header">
+  <div class="blog__header__title">
+    <%= link_to "Je mets au défi la vie.", "/", class: "blog__header__title__text" %>
+  </div>
+  <div class="blog__header__right">
+    <%= link_to "新規投稿", new_post_path, class: "blog__header__right__btn" %>
+  </div>
+</header>
+<div class="blog__contents">
+  <% @posts.each do |post| %>
+    <div class="blog__content">
+      <div class="blog__content__left">
+        <div class="blog__content__left__image"></div>
       </div>
-      <div class="content__right__bottom">
-        <div class="content__right__bottom--date">
-          <%= post.created_at %>
+      <div class="blog__content__right">
+        <div class="blog__content__right__top">
+          <%= link_to post.title, post_path(post.id), class: "blog__content__right__top__title" %>
+        </div>
+        <div class="blog__content__right__bottom">
+          <div class="blog__content__right__bottom__date">
+            <%= post.created_at %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
-<header class="header">
-  <div class="header__title">
-    <%= link_to "Je mets au défi la vie.", '/', class: "header__title--text" %>
-  </div>
-  <div class="header__right">
-    <%= link_to "新規投稿", '/posts/new', class: "header__right--btn" %>
-  </div>
-</header>
-<div class="contents">
+  <% end %>
 </div>

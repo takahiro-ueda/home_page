@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "home#index"
   
-  resources :posts#, only: [:new]
+  resources :posts
+  post "posts/create"                                                                     
 end
