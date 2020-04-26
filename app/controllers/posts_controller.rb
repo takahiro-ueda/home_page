@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 
   def create
     # binding.pry
-    Post.create(post_params)
+    post = Post.create(post_params)
     redirect_to action: "index"
     # if @post.save
     #   redirect_to action: "index"
@@ -20,6 +20,7 @@ class PostsController < ApplicationController
     #   redirect_to action: "new"
     #   flash[:success] = "投稿失敗しました!"
     # end
+
   end
 
   def show
@@ -45,7 +46,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :image)
     # params.require(:post).permit(:title, :content, :image, :remove_image)
   end
 end

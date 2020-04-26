@@ -20,6 +20,6 @@
     <%= link_to "削除", post_path(@post.id), method: :delete, class: "postManage__delete" %>
   </div>
   <div class="postText">
-    <%= simple_format @post.content %>
+    <%= @post.content %>
   </div>
 </div>
