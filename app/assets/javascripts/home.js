@@ -1,17 +1,17 @@
-$(function() {
+// $(function() {
 
-  // 新規登録モーダル
+//   // 新規登録モーダル
   
-  $('.signup-show').click(function() {
-    $('#signup-modal').fadeIn();
-  });
+//   $('.signup-show').click(function() {
+//     $('#signup-modal').fadeIn();
+//   });
 
-  $('#close-modal').click(function() {
-    $('#signup-modal').fadeOut();
-  });
+//   $('#close-modal').click(function() {
+//     $('#signup-modal').fadeOut();
+//   });
   
-  // 言語一覧
+//   // 言語一覧
   
   
 
-});
+// });
