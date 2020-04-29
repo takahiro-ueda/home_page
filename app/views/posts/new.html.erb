@@ -1,9 +1,3 @@
-<h1>New Post</h1>
-
-<%= render 'form', post: @post %>
-
-<%= link_to 'Back', posts_path %>
-
 <header class="blog__header">
   <div class="blog__header__title">
     <%= link_to "Je mets au défi la vie.", "/", class: "blog__header__title__text" %>
@@ -17,12 +11,10 @@
   新規記事の作成
   <%= form_with model: @post, class: :form, local: true do |form| %>
   <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
-  </div>
-  <%= form.text_area :content, placeholder: :ブログ本文, class: :form__text %>
+  <%= form.label :content %>
+  <%= form.rich_text_area :content, placeholder: :ブログ本文, class: :form__text %>
   <%= form.submit '投稿する', class: :form__btn %>
   <% end %>
   </div>
+  <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
 </div>

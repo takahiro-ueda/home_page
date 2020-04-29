@@ -1,10 +1,4 @@
-<h1>Editing Post</h1>
-
-<%= render 'form', post: @post %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
-<header class="blog__header">
+|<header class="blog__header">
   <div class="blog__header__title">
     <%= link_to "Je mets au défi la vie.", "/", class: "blog__header__title__text" %>
   </div>
@@ -12,15 +6,15 @@
     <%= link_to "新規投稿", new_post_path, class: "blog__header__right__btn" %>
   </div>
 </header>
-<div class="blog__content__title">
-  投稿の編集
-  <%= form_with model: @post, class: :form, local: true do |form| %>
-  <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
-  <div class="field">
+<div class="blog__contents">
+  <div class="blog__content__title">
+    投稿の編集
+    <%= form_with model: @post, class: :form, local: true do |form| %>
+    <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
     <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+    <%= form.rich_text_area :content, placeholder: :ブログ本文, class: :form__text %>
+    <%= form.submit '投稿する', class: :form__btn %>
+    <% end %>
+    <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
   </div>
-  <%= form.text_area :content, placeholder: :ブログ本文, class: :form__text %>
-  <%= form.submit '投稿する', class: :form__btn %>
-  <% end %>
 </div>
