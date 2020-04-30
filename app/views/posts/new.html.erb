@@ -9,12 +9,45 @@
 <div class="blog__contents">
   <div class="blog__content__title">
   新規記事の作成
-  <%= form_with model: @post, class: :form, local: true do |form| %>
-  <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
-  <%= form.label :content %>
-  <%= form.rich_text_area :content, placeholder: :ブログ本文, class: :form__text %>
-  <%= form.submit '投稿する', class: :form__btn %>
+  <%= form_with(model: @post, class: :form, local: true) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: :タイトル %>
   </div>
+
+  <div class="field">
+    <%= form.label :content %>
+  <%= form.rich_text_area :content, placeholder: :ブログ本文 %>
+  </div>
+  <%# <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
+  <%# <%= form.label :content %>
+  <%# <%= form.rich_text_area :content, placeholder: :ブログ本文, class: :form__text %> 
+  <%# <%= form.label :image %>
+  <%# <%= form.file_field :image, multiple: true  %> 
+  <%# <%= form.submit '投稿する', class: :form__btn %> 
+
+  <div class="actions">
+    <%= form.submit '投稿する' %>
+  </div>
+<% end %>
+</div>
   <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
 </div>
+
+<h1>New Post</h1>
+
+<%= render 'form', post: @post %>
+
+<%= link_to 'Back', posts_path %>

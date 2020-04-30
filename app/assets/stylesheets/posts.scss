@@ -58,12 +58,12 @@ body{
           font-size: 15px;
           color: #999;
           display: flex;
-//           &--userName{
-//             &--btn{
-//               text-decoration: none;
-//               color: #999;
-//             }
-          // }
+          &--userName{
+            &--btn{
+              text-decoration: none;
+              color: #999;
+            }
+          }
           &__date{
             margin-left: 20px;
           }
@@ -73,7 +73,7 @@ body{
         font-size: 30px;
         font-weight: bold;
         padding-top: 30px;
-        text-align: center;
+        // text-align: center;
       }
     }
     .postTitle{
@@ -132,7 +132,7 @@ body{
       margin: 15px auto 0;
     }
   }
-//   .user{
-//     padding: 15px 30px;
-  // }
+  .user{
+    padding: 15px 30px;
+  }
 }
