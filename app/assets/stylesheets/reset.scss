@@ -137,8 +137,8 @@ mark {
   color: black;
 }
 
-// /*
-//  * Correct font family set oddly in Safari 5 and Chrome. */
+/*
+ * Correct font family set oddly in Safari 5 and Chrome. */
 // code,
 // kbd,
 // pre,
@@ -147,11 +147,43 @@ mark {
 //   font-size: 1em;
 // }
 
-// /*
-//  * Improve readability of pre-formatted text in all browsers. */
-// pre {
-//   white-space: pre-wrap;
-// }
+blockquote{
+  position:relative;
+  border:1px solid #8BC0B8;
+  border-radius:10px;
+  padding:20px;
+}
+blockquote:before{
+  position:absolute;
+  font-family:'FontAwesome';
+  content:'\f10d';
+  font-size: 20px;
+  color:#8BC0B8;
+  top:10px;
+  left:10px;
+}
+blockquote:after{
+  position:absolute;
+  font-family:'FontAwesome';
+  content:'\f10e';
+  font-size: 20px;
+  color:#8BC0B8;
+  right:10px;
+  bottom:10px;
+}
+blockquote cite {
+  display: block;
+  font-size: 0.8rem;
+  text-align: right;
+  color: #D4DED7;
+  padding-right:20px;
+}
+
+/*
+ * Improve readability of pre-formatted text in all browsers. */
+pre {
+  white-space: pre-wrap;
+}
 
 /*
  * Set consistent quote types. */
@@ -428,9 +460,9 @@ select {
   width: 100%;
 }
 
-// i {
-//   font-style: normal;
-// }
+i {
+  font-style: normal;
+}
 
 .animate {
   -moz-transition-property: all;
@@ -453,10 +485,10 @@ select {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1%, rgba(0, 0, 0, 0.2) 100%);
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
+// ul {
+//   margin: 0;
+//   padding: 0;
+// }
 // ul li {
 //   list-style: none;
 //   padding: 0;

@@ -1,11 +1,4 @@
-|<header class="blog__header">
-  <div class="blog__header__title">
-    <%= link_to "Je mets au défi la vie.", "/", class: "blog__header__title__text" %>
-  </div>
-  <div class="blog__header__right">
-    <%= link_to "新規投稿", new_post_path, class: "blog__header__right__btn" %>
-  </div>
-</header>
+<%= render partial: 'header' %>
 <div class="blog__contents">
   <div class="blog__content__title">
     投稿の編集

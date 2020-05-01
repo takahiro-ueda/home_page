@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
     @posts = Post.all
-    # @posts = Post.includes(:post_images).order(created_at: "DESC").limit(3)
+    @posts= Post.order(created_at: :desc).limit(10)
   end
 end

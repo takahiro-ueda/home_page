@@ -1,11 +1,4 @@
-<header class="blog__header">
-  <div class="blog__header__title">
-    <%= link_to "Je mets au défi la vie.", "/", class: "blog__header__title__text" %>
-  </div>
-  <div class="blog__header__right">
-    <%= link_to "新規投稿", new_post_path, class: "blog__header__right__btn" %>
-  </div>
-</header>
+<%= render partial: 'header' %>
 <div class="blog__contents">
   <div class="postTitle">
     <%= @post.title %>
@@ -15,11 +8,13 @@
   </div>
   <div class="postAuthor">
   </div>
-  <div class="postManage">
-    <%= link_to "編集", edit_post_path(@post.id), class: "postManage__edit" %>
-    <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "postManage__delete" %>
-    <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
-  </div>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+    <div class="postManage">
+      <%= link_to "編集", edit_post_path(@post.id), class: "postManage__edit" %>
+      <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "postManage__delete" %>
+      <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
+    </div>
+  <% end %>
   <div class="postText">
     <%= @post.content %>
   </div>
