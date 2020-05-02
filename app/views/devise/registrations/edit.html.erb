@@ -1,44 +1,79 @@
-<div class="content__user">
-  <div class="content__user--left">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="content">
+  <div class="content__user">
+    <div class="content__user__left">
+    <h2> ユーザー編集</h2>
     </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
+    <div class="content__user__right">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :password %> <i>(変更しない場合は空白OK)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+      <div class="list">
+        <div class="field">
+          <%= f.label :email, 'メールアドレス' %><br />
+          <div class="field__list">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+      
+        <div class="field">
+          <%= f.label :age, '年齢' %>
+          <div class="field__list">
+            <%= f.select :age, [["",""], ["10代","10"], ["20代","20"], ["30代","30"], ["40代","40"], ["50代","50"], ["60代","60"], ["70代以上","70"] ], {} %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :sex, '性別' %>
+          <div class="field__list">
+            <%= f.select :sex, [["",""], ["男性","1"], ["女性","2"]], {} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :profile, 'プロフィール' %><br />
+        <div class="field__list">
+          <%= f.rich_text_area :profile, autofocus: true %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, 'パスワード' %> <i>(変更しない場合は空白OK)</i><br />
+        <div class="field__list">
+          <%= f.password_field :password, autocomplete: "new-password" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, 'パスワード確認用' %><br />
+        <div class="field__list">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_password, "現在のパスワード" %> <i>(変更の有無に関わらず必須)</i><br />
+        <div class="field__list">
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </div>
+      </div>
+
+      
+      <%= button_to "更新"%>
+
+      <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか?" }, method: :delete %>
+
+      <%= button_to "戻る", :back %>
       <% end %>
     </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(変更を確認するには、現在のパスワードが必要です)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "更新" %>
-    </div>
-  <% end %>
-
-  <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-
-  <%= link_to "Back", :back %>
+  </div>
 </div>

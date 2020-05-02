@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = User.new(user_params) #user_paramsはPOSTデータをチェックするメソッド
-   
     if @user.save
       flash[:success] = '新しいユーザーを登録しました。'
-      redirect_to @user
+      redirect_to action: :index
     else
       flash.now[:danger] = 'ユーザーの登録に失敗しました。'
       render :new
