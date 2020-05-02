@@ -19,6 +19,7 @@ summary {
   display: block;
 }
 
+
 /*
  * Correct `inline-block` display not defined in IE 8/9. */
 audio,
@@ -111,6 +112,10 @@ strong {
   font-weight: bold;
 }
 
+del {
+  text-decoration:line-through;
+}
+
 /*
  * Address styling not present in Safari 5 and Chrome. */
 dfn {
@@ -134,12 +139,44 @@ mark {
 
 /*
  * Correct font family set oddly in Safari 5 and Chrome. */
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, serif;
-  font-size: 1em;
+// code,
+// kbd,
+// pre,
+// samp {
+//   font-family: monospace, serif;
+//   font-size: 1em;
+// }
+
+blockquote{
+  position:relative;
+  border:1px solid #8BC0B8;
+  border-radius:10px;
+  padding:20px;
+}
+blockquote:before{
+  position:absolute;
+  font-family:'FontAwesome';
+  content:'\f10d';
+  font-size: 20px;
+  color:#8BC0B8;
+  top:10px;
+  left:10px;
+}
+blockquote:after{
+  position:absolute;
+  font-family:'FontAwesome';
+  content:'\f10e';
+  font-size: 20px;
+  color:#8BC0B8;
+  right:10px;
+  bottom:10px;
+}
+blockquote cite {
+  display: block;
+  font-size: 0.8rem;
+  text-align: right;
+  color: #D4DED7;
+  padding-right:20px;
 }
 
 /*
@@ -448,15 +485,15 @@ i {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1%, rgba(0, 0, 0, 0.2) 100%);
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
-ul li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+// ul {
+//   margin: 0;
+//   padding: 0;
+// }
+// ul li {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+// }
 
 .row {
   width: 100%;

@@ -1,7 +1,7 @@
 <header>
   <div class="header__content">
     <div class="header__content__left">
-      <%= link_to "Je mets au défi la vie.", '/', class: "header__content__left" %>
+      <%= link_to "Tree Blog", '/', class: "header__content__left" %>
     </div>
     <div class="header__content__right">
       <div class="header__content__right__icon">
@@ -31,28 +31,14 @@
         <div class="content__main__left__header">
         <h2>新着投稿</h2>
         <% @posts.each do |post| %>
-          <div class="blog__content">
-            <div class="blog__content__left">
-              <div class="blog__content__left__image"></div>
-            </div>
-            <div class="blog__content__right">
-              <div class="blog__content__right__top">
-                <%= link_to post.title, post_path(post.id), class: "blog__content__right__top__title" %>
-              </div>
-              <div class="blog__content__right__bottom">
-                <div class="blog__content__right__bottom__date">
-                  <%= post.created_at %>
-                </div>
-              </div>
-            </div>
-          </div>
+          <%= render partial: "posts/post", locals: { post: post } %>
         <% end %>
         </div>
       </div>
       <div class="content__main__right">
         <ul class="content__main__right__side">
           <li class="content__main__right__side__list">
-            <h2 class="content__main__right__side__list__menu">作成者</h2>
+            <%= link_to "作成者", edit_user_registration_path, class: "content__main__right__side__list__menu" %>
             <ul>
               <li>
                 <img src="/line_743968890967290.jpg" alt="staff1" class="content__main__right__side__list__menu__image">
@@ -89,7 +75,7 @@
   </div>
 </div>
 <footer class="pcFooter">
-  <%# <div class="pcFooter__footer">
+  <div class="pcFooter__footer">
   <ul class="pcFooter__footer__contents">
     <li class="pcFooter__footer__contents__content">
       <h2 class="pcFooter__footer__contents__content__head">管理者</h2>
@@ -112,7 +98,7 @@
         <li><a a class="fa fa-twitter" href="https://twitter.com/home">Twitter</a></li>
       </ul>
     </li>
-  </ul> %>
-  <%# </div> %>
+  </ul> 
+  </div>
   <p>© Tree blog. 2020.4~</p>
 </footer>
