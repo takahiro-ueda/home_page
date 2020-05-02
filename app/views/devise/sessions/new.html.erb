@@ -1,8 +1,12 @@
 <div class="content__user">
-  <div class="content__user--left">
-  <h2>ログイン</h2>
+  <div class="content__user__left">
+    <h2>ログイン</h2>
+  </div>
 
+  <div class="content__user__right">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="list">
     <div class="field">
       <%= f.label :メールアドレス %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -12,6 +16,7 @@
       <%= f.label :パスワード %><br />
       <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
+  </div>
 
     <% if devise_mapping.rememberable? %>
       <div class="field">
