@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
-
+  has_many :comments
 
   validates :password,
         presence: { message: '未入力' },
