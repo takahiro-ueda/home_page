@@ -25,10 +25,10 @@
       <%= form.rich_text_area :content, placeholder: :ブログ本文, class: :form__text %>
     </div>
 
-    <div class="actions">
-      <%= form.submit '投稿する', class: :form__btn %>
-      <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
-    </div>
+    
+    <%= button_to "投稿する" %>
+    <%# <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %> 
+    <%= button_to "戻る", :back %>
   <% end %>
   </div>
 </div>

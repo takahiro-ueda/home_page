@@ -19,20 +19,20 @@
     <%= @post.content %>
   </div>
 </div>
-<div class="comment">
-  <p class="comment__heaader">コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div class="comment__field">
-      
-      <%= c.content %>
-    </div><br />
-  <% end %>
+<div class="row">
+  <ul>
+    <li class="comment-create">
+      <h3 class="text-left title">コメント一覧</h3>
+    </li>
+    <li id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments } %>
+    </li>
+  </ul>
+  <hr>
   <% if user_signed_in? %>
-    <%= form_with(model: [@post, @comment], local: true) do |f| %>
-      <%= f.text_area :content, class: "form-control", rows: 5 %>
-      <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-        <i class="fa fa-comments"></i> コメントする
-      <% end %>
-    <% end %>
+    <div class="comment-create">
+      <h3 class="text-left">コメントする</h3>
+      <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+    </div>
   <% end %>
 </div>

@@ -1,5 +1,5 @@
 body{
-  // background-color: #f6f6f6;
+  background-color: #f6f6f6;
   // min-width: 900px;
   .blog__header{
     height: 56px;
@@ -31,7 +31,7 @@ body{
   .blog__contents{
     margin: 30px auto 0;
     background-color: #fff;
-    height: 700px;
+    height: 500px;
     width: 70%;
     overflow: scroll;
     .blog__content{
@@ -138,6 +138,6 @@ body{
     padding: 15px 30px;
   }
 }
-.actions {
-  display: flex;
-}
+// .actions {
+//   display: flex;
+// }
