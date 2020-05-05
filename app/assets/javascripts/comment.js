@@ -32,4 +32,29 @@ $(function(){
       alert('error');
     })
   })
+  $('.delete_btn').on('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var href = $(this).attr('href');
+    var free_question_id = $(this)[0].dataset['freeQuestionId'];
+    $.ajax({
+      type: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      dataType: 'json',
+      url: href,
+      data: JSON.stringify({free_question_id: free_question_id}),
+      success: function(res) {
+        $(".row[data=" + free_question_id + "]").empty();
+        $(".row[data=" + free_question_id + "]").html(
+          `<span>削除しました</span>`
+        );
+        return false;
+      },
+      error: function(res) {
+        return false;
+      }
+    })
+  });
 })
