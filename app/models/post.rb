@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   validates :title, :content, presence: true, unless: :image?
   # validates :title, :content, :image, presence: true

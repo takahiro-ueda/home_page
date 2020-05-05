@@ -11,6 +11,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
+    #新着順で表示
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   # GET /posts/new
@@ -27,7 +30,6 @@ class PostsController < ApplicationController
   def create
     # binding.pry
     @post = Post.new(post_params)
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
