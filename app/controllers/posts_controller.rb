@@ -6,11 +6,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts = Post.includes(:user)
+    @likes = Like.where(user_id: current_user)
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @likes_count = Like.where(post_id: @post.id).count
     @comment = Comment.new
     #新着順で表示
     @comments = @post.comments.order(created_at: :desc)
