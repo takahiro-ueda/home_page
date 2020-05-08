@@ -12,9 +12,10 @@
         <div class="comment-text">
           <p><%= link_to "#{comment.user.nickname}", users_path(comment.user.id) %></p> 
             <% if comment.user == current_user %>
-              <%= link_to post_like_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }, class: "comment_destroy" do %>
-              <%= link_to post_like_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %> 
-                <i class="fa fa-trash" style="color: black;"></i>
+              <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }, class: "comment_destroy" do %>
+                <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %> 
+                  <i class="fa fa-trash" style="color: black;"></i>
+                <% end %>
               <% end %>
             <% end %>
           <div class="comment-entry">
@@ -40,7 +41,7 @@
           <div class="comment-text">
             <p><%= link_to "#{comment.user.nickname}", users_path(comment.user.id) %></p>
             <% if comment.user == current_user %>
-              <%= link_to post_like_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+              <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
                 <i class="fa fa-trash" style="color: black;"></i>
               <% end %>
             <% end %>

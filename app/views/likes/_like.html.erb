@@ -1,22 +1,22 @@
 <% if user_signed_in? %>
   <% if post.like_user(current_user.id) %>
-    <%= link_to post_likes_path(likes, post_id: post.id), method: :delete, id: "like-button", remote: true do %>
-      <i class="fa fa-heart like-btn" ></i>
+    <%= link_to post_like_path(current_user, post, like), method: "DELETE", id: "like-button", remote: true do %>
+      お気に入り<i class="fa fa-heart like-btn" ></i>
       <span>
-        お気に入り<%= post.likes_count %>
+        <%= Like.where(post_id: post[:id]).count %>
       </span>
     <% end %>
   <% else %>
-    <%= link_to post_likes_path(post), id: "like-button", remote: true do %>
-      <i class="fa fa-heart unlike-btn"></i>
+    <%= link_to post_likes_path(current_user, post), method: "POST", id: "like-button", remote: true do %>
+      お気に入り<i class="fa fa-heart unlike-btn"></i>
       <span>
-        お気に入り<%= post.likes_count %>
+        <%= Like.where(post_id: post[:id]).count %>
       </span>
     <% end %>
   <% end %>
 <% else %>
   お気に入り<i class="fa fa-heart unlike-btn"></i>
   <span>
-    <%= likes_count %>
+    <%= Like.where(post_id: post[:id]).count %>
   </span>
 <% end %>
