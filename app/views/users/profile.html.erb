@@ -1,0 +1,45 @@
+<div class="content">
+  <div class="content__user">
+    <div class="content__user__left">
+    <h2> プロフィール </h2>
+    </div>
+
+    <div class="content__user__right">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="list">
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+      
+        <div class="field">
+          <%= f.label :age, '年齢' %>
+          <div class="field__list">
+            <%= f.select :age, [["",""], ["10代","10"], ["20代","20"], ["30代","30"], ["40代","40"], ["50代","50"], ["60代","60"], ["70代以上","70"] ], {} %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :sex, '性別' %>
+          <div class="field__list">
+            <%= f.select :sex, [["",""], ["男性","1"], ["女性","2"]], {} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :profile, 'プロフィール' %><br />
+        <div class="field__list">
+          <%= f.rich_text_area :profile, autofocus: true %>
+        </div>
+      </div>
+
+      <%= button_to "更新"%>
+
+      <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか?" }, method: :delete %>
+
+      <%= button_to "戻る", :back %>
+      <% end %>
+    </div>
+  </div>
+</div>

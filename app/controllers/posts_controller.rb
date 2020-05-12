@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -6,7 +7,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts = Post.includes(:user)
-    # @likes = Like.where(user_id: current_user)
+    @likes = Like.where(user_id: current_user)
+    @like_count = Like.where(post_id: params[:id]).count
   end
 
   # GET /posts/1
@@ -14,12 +16,12 @@ class PostsController < ApplicationController
   def show
     @like = 0
     @likes = Like.where(post_id: params[:id])
-    # @likes_count = Like.where(post_id: @post.id).count
     @comment = Comment.new
     #新着順で表示
     # @comments = @post.comments.order(created_at: :desc)
     @comments = @post.comments.includes(:user)
-    
+    @comments = @post.comments
+    @comment = @post.comments.build
   end
 
   # GET /posts/new

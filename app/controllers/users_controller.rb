@@ -39,11 +39,12 @@ class UsersController < ApplicationController
 
   def show
     @posts = @user.posts
-    # @likes = Like.where(post_id: params[:post_id])
   end
 
   def destroy
-    
+  end
+
+  def profile
   end
 
   private
