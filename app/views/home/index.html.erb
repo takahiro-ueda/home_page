@@ -20,13 +20,9 @@
     <%= image_tag '/10213.jpg', class: "content__image" %>
     <div class="content__header">
       <div class="content__header__list">
-        <%# <li class="content__header__list__icon"><a href="/">ホーム</a></li> %>
         <%= link_to "ホーム", "/", class: "content__header__list__icon" %>
-        <%# <li class="content__header__list__icon"><a href="/users/profile">プロフィール</a></li> %>
         <%= link_to "プロフィール", profile_users_path, class: "content__header__list__icon" %>
-        <%# <li class="content__header__list__icon"><a href="/">制作概要</a></li> %>
-        <%= link_to "ホーム", "/", class: "content__header__list__icon" %>
-        <%# <li class="content__header__list__icon"><a href="posts">ブログ</a></li> %>
+        <%= link_to "制作概要", "/", class: "content__header__list__icon" %>
         <%= link_to "ブログ", posts_path, class: "content__header__list__icon" %>
       </div>
     </div>
