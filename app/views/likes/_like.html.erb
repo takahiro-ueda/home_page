@@ -1,7 +1,6 @@
 <% if user_signed_in? %>
   <% if post.like_user(current_user.id) %>
     <%= link_to post_like_path(current_user, @like, post_id: post.id), method: "DELETE", id: "like-button", remote:true do %>
-    <%# <%= link_to post_like_path(current_user, post, like), method: "DELETE", id: "like-button", remote:true do %>
       <i class="fa fa-heart like-btn" ></i>いいね件数:
       <span>
         <%= @likes.where(post_id: post.id).count %>
