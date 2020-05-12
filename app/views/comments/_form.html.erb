@@ -1,5 +1,9 @@
 <!-- コメント入力フォーム ------------------------------------------------------------>
-<%= form_with(model: [@post, @comment], local: true, id: "new_comment") do |f| %>
-  <%= f.text_area :content, placeholder: "コメントする", rows: "2", class: "textbox" %>
-  <%= f.submit "送信", class: "form__submit" %>
+<% if current_user %>
+  <%= form_with(model: [@post, @comment], local: true, id: "new_comment") do |f| %>
+    <%= f.text_area :content, placeholder: "コメントする", rows: "2", class: "textbox" %>
+    <%= f.submit "送信", class: "form__submit" %>
+  <% end %>
+<% else %>
+  <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
 <% end %>

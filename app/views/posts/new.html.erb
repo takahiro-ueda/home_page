@@ -27,8 +27,8 @@
 
     <div class="actions">
       <%= form.submit '投稿する', class: :form__btn %>
-      <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
     </div>  
+    <%= button_to '戻る', posts_path(@post.id), class: "postManage__back" %>
   <% end %>
   </div>
 </div>

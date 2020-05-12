@@ -42,7 +42,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    redirect_to("/")
+  end
+
+  def profile
   end
 
   private

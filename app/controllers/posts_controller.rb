@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -6,14 +7,21 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts = Post.includes(:user)
+    @likes = Like.where(user_id: current_user)
+    @like_count = Like.where(post_id: params[:id]).count
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @like = 0
+    @likes = Like.where(post_id: params[:id])
     @comment = Comment.new
     #新着順で表示
-    @comments = @post.comments.order(created_at: :desc)
+    # @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.includes(:user)
+    @comments = @post.comments
+    @comment = @post.comments.build
   end
 
   # GET /posts/new
@@ -60,7 +68,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: '削除に成功しました。' }
       format.json { head :no_content }
     end
   end
