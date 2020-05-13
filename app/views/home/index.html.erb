@@ -30,10 +30,11 @@
     <div class="content__main">
       <div class="content__main__left">
         <div class="content__main__left__header">
-        <h2>新着投稿</h2>
-        <% @posts.each do |post| %>
-          <%= render partial: "posts/post", locals: { post: post } %>
-        <% end %>
+          <h2>新着投稿</h2>
+          <% @posts.each do |post| %>
+            <%= render partial: "posts/post", locals: { post: post } %>
+          <% end %>
+          <%= paginate(@posts) %>
         </div>
       </div>
       <div class="content__main__right">

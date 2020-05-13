@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-    @posts = Post.includes(:user)
+    @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(5)
     @likes = Like.where(user_id: current_user)
     @like_count = Like.where(post_id: params[:id]).count
   end
