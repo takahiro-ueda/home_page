@@ -60,6 +60,8 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ancestry (3.0.7)
+      activerecord (>= 3.2.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     bcrypt (3.1.13)
@@ -295,6 +297,7 @@ PLATFORMS
 DEPENDENCIES
   actiontext
   active_hash
+  ancestry
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
