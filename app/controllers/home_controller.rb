@@ -4,4 +4,5 @@ class HomeController < ApplicationController
     @posts= Post.order(created_at: :desc).limit(5)
     @likes = Like.where(user_id: current_user)
   end
+
 end
