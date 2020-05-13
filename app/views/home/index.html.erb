@@ -1,7 +1,8 @@
 <header>
   <div class="header__content">
     <div class="header__content__left">
-      <%= link_to "Tree Blog", '/', class: "header__content__left" %>
+      <%= link_to "Tree Blog", '/', class: "header__content__left__title" %>
+      <div class="header__content__left__sub-title">半歩先の目標設定・達成</div>
     </div>
     <div class="header__content__right">
       <div class="header__content__right__icon">
@@ -22,7 +23,7 @@
       <div class="content__header__list">
         <%= link_to "ホーム", "/", class: "content__header__list__icon" %>
         <%= link_to "プロフィール", profile_users_path, class: "content__header__list__icon" %>
-        <%= link_to "制作概要", "/", class: "content__header__list__icon" %>
+        <%= link_to "制作概要", overview_users_path, class: "content__header__list__icon" %>
         <%= link_to "ブログ", posts_path, class: "content__header__list__icon" %>
       </div>
     </div>
@@ -49,14 +50,15 @@
                 しています<br>
                 日々の積み上げを記録していき<br>
                 たいと思います<br>
-                よろしくお願いします！！！
+                よろしくお願いします！！！<br>
+                詳しくはプロフィールをご覧ください
                 </h4>
               </li>
             </ul>
             <h2 class="content__main__right__side__list__menu">カテゴリー一覧</h2>
             <ul>
-              <li><a href="#">プログラミング日記</a></li>
-              <li><a href="#">ランニング日記</a></li>
+              <li><a href="#">プログラミング</a></li>
+              <li><a href="#">ランニング</a></li>
             </ul>
             <h2 class="content__main__right__side__list__menu">個人開発アプリ</h2>
             <ul>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'profile', to: 'users#profile'
+      get 'overview', to: 'users#overview'
     end
   end
   resources :posts do
