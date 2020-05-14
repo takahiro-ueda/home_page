@@ -76,4 +76,4 @@ gem 'jquery-turbolinks'
 gem 'gretel'
 gem 'actiontext'
 gem 'active_hash'
-gem 'ancestry'
+

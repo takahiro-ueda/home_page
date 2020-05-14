@@ -6,9 +6,19 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-    @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(5)
+    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
     @likes = Like.where(user_id: current_user)
-    @like_count = Like.where(post_id: params[:id]).count
+    
+    if params[:category_id]
+      # Categoryのデータベースのテーブルから一致するidを取得
+      @category = Category.find(params[:category_id])
+       
+      # category_idと紐づく投稿を取得
+      @posts = @category.posts.order(created_at: :desc).all
+    else
+      # 投稿すべてを取得
+      @posts = Post.order(created_at: :desc).all
+    end
   end
 
   # GET /posts/1
@@ -18,15 +28,16 @@ class PostsController < ApplicationController
     @likes = Like.where(post_id: params[:id])
     @comment = Comment.new
     #新着順で表示
-    # @comments = @post.comments.order(created_at: :desc)
-    @comments = @post.comments.includes(:user)
-    @comments = @post.comments
-    @comment = @post.comments.build
+    @comments = @post.comments.includes(:user)#.order(created_at: :desc)
+    @category = @post.category_id
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    # @category = Category.find(params[:category_id])
+    @post.post_categories.build
+    @category = Category.all
   end
 
   # GET /posts/1/edit
@@ -39,7 +50,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: '投稿が作成されました。' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -52,8 +63,8 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+      if category = @post.categories.update(post_params[:category_id])
+        format.html { redirect_to @post, notice: '投稿が更新されました。' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -72,6 +83,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def set_category
+    # @category = Category.all.order("id ASC").limit(13) # categoryの親を取得
+    @category = Category.find(params[:category_id])
+    # def category_children  
+    #   @category_children = Category.find(params[:postcategory]).children 
+    # end
+  end
+
+  def category
+    Category.find(params[:category_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -80,6 +103,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :image).merge(user_id: current_user.id)
+      params.require(:post).permit(:title, :content, :image, :category_id).merge(user_id: current_user.id)
     end
 end
