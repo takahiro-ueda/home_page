@@ -5,7 +5,7 @@
   </div>
   <span>【カテゴリ】</span>
   <% @post.categories.each do |category| %>
-    <%= @category.name %>
+    <%= category.name %>
   <% end %>
   <div class="postDate">
     <%= @post.created_at %>

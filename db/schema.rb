@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_140326) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_categories_on_name"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -70,8 +69,8 @@ ActiveRecord::Schema.define(version: 2020_05_13_140326) do
   end
 
   create_table "post_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "post_id"
-    t.bigint "category_id"
+    t.bigint "post_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_post_categories_on_category_id"

@@ -5,20 +5,17 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
-    @likes = Like.where(user_id: current_user)
-    
     if params[:category_id]
       # Categoryのデータベースのテーブルから一致するidを取得
       @category = Category.find(params[:category_id])
-       
       # category_idと紐づく投稿を取得
       @posts = @category.posts.order(created_at: :desc).all
     else
       # 投稿すべてを取得
       @posts = Post.order(created_at: :desc).all
     end
+    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
+    @likes = Like.where(user_id: current_user)
   end
 
   # GET /posts/1
@@ -35,9 +32,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    # @category = Category.find(params[:category_id])
     @post.post_categories.build
-    @category = Category.all
+    @category = Category.all.order("id ASC").limit(13)
   end
 
   # GET /posts/1/edit
@@ -47,7 +43,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    category = Category.find(post_params[:category_id])
+    @post = category.posts.create(post_params)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: '投稿が作成されました。' }
@@ -83,26 +80,22 @@ class PostsController < ApplicationController
     end
   end
 
-  def set_category
-    # @category = Category.all.order("id ASC").limit(13) # categoryの親を取得
-    @category = Category.find(params[:category_id])
-    # def category_children  
-    #   @category_children = Category.find(params[:postcategory]).children 
-    # end
-  end
-
   def category
     Category.find(params[:category_id])
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # コールバックを使用して、アクション間で共通の設定または制約を共有します。
     def set_post
       @post = Post.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # 信頼できるパラメータのリストのみを許可します。
     def post_params
       params.require(:post).permit(:title, :content, :image, :category_id).merge(user_id: current_user.id)
+    end
+
+    def category_params
+      params.require(:category).permit(:name)
     end
 end
