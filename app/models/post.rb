@@ -17,6 +17,14 @@ class Post < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
+  def self.search(search)
+    if search
+      Post.where('category_id LIKE(?)', "%#{search}%")
+    else
+      Post.all
+    end
+  end
+
   validates :title, :content, :category_id, presence: true, unless: :image?
   validates :content, presence: true, length: { maximum: 2000 }
 

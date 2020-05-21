@@ -2,13 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /posts
-  # GET /posts.json
   def index
     if params[:category_id]
       # Categoryのデータベースのテーブルから一致するidを取得
       @category = Category.find(params[:category_id])
       # category_idと紐づく投稿を取得
+      # post = @categories.posts
       @posts = @category.posts.order(created_at: :desc).all
     else
       # 投稿すべてを取得
@@ -18,8 +17,6 @@ class PostsController < ApplicationController
     @likes = Like.where(user_id: current_user)
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
     @like = 0
     @likes = Like.where(post_id: params[:id])
@@ -29,19 +26,14 @@ class PostsController < ApplicationController
     @category = @post.category_id
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
     @post.post_categories.build
-    @category = Category.all.order("id ASC").limit(13)
   end
 
-  # GET /posts/1/edit
   def edit
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
     category = Category.find(post_params[:category_id])
     @post = category.posts.create(post_params)
@@ -56,8 +48,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if category = @post.categories.update(post_params[:category_id])
@@ -70,8 +60,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
@@ -82,6 +70,11 @@ class PostsController < ApplicationController
 
   def category
     Category.find(params[:category_id])
+  end
+
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @posts = Post.search(params[:search])
   end
 
   private
