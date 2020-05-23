@@ -3,6 +3,10 @@
   <div class="postTitle">
     <%= @post.title %>
   </div>
+  <span>【カテゴリ】</span>
+  <% @post.categories.each do |category| %>
+    <%= category.name %>
+  <% end %>
   <div class="postDate">
     <%= @post.created_at %>
   </div>

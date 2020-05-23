@@ -1,0 +1,23 @@
+<%= render partial: 'nolist-header' %>
+
+<%# <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%# <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" } %>
+  <%# <%= form.submit '検索', name: nil %>
+  <%# <%= hidden_field_tag :search, true %>
+<%# <% end %>
+<%# <div class="contents row">
+  <% @posts.each do |post| %>
+    <%# <%= render partial: "posts/post", locals: { post: post } %>
+  <%# <% end %>
+<%# </div> %>
+<div class="content__main__left__header">
+  <h2>新着投稿</h2>
+  <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+    <%= hidden_field_tag :search, true %>
+  <% end %>
+  <% @posts.each do |post| %>
+    <%= render partial: "posts/post", locals: { post: post } %>
+  <% end %>
+</div>
