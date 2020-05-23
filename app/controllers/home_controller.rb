@@ -15,8 +15,8 @@ class HomeController < ApplicationController
     #   # category_idと紐づく投稿を取得
     #   @posts = @category.posts.order(created_at: :desc).all
     # else
-    #   # 投稿すべてを取得
-    #   @posts = Post.order(created_at: :desc).all
+      # 投稿すべてを取得
+      # @posts = Post.order(created_at: :desc).all
 
       # # Categoryのデータベースのテーブルから一致するidを取得
       # @category = Category.find_by(id: params[:id])
@@ -27,8 +27,9 @@ class HomeController < ApplicationController
       # # @category = @posts.category_id
     # end
 
-    def search
-      @posts = Post.search(params[:search])
-    end
+  end
+
+  def search
+    @posts = Post.search(params[:search]) 
   end
 end

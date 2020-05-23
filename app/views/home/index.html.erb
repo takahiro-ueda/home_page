@@ -31,9 +31,9 @@
       <div class="content__main__left">
         <div class="content__main__left__header">
           <h2>新着投稿</h2>
-          <%= form_with(url: search_posts_path, method: :get, local: true) do |form| %>
-            <%= form.collection_select :category_id,'', Category.all, :id, :name, { prompt: "カテゴリを選んでください" } %>
-            <%= form.submit_tag '検索', name: nil %>
+          <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+            <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "search-input" %>
+            <%= form.submit "検索", class: "search-btn" %>
             <%= hidden_field_tag :search, true %>
           <% end %>
           <% @posts.each do |post| %>

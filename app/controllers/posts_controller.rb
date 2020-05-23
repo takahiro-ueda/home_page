@@ -1,19 +1,23 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, except: [:index, :show, :search]
 
   def index
-    if params[:category_id]
-      # Categoryのデータベースのテーブルから一致するidを取得
-      @category = Category.find(params[:category_id])
-      # category_idと紐づく投稿を取得
-      # post = @categories.posts
-      @posts = @category.posts.order(created_at: :desc).all
-    else
-      # 投稿すべてを取得
-      @posts = Post.order(created_at: :desc).all
-    end
-    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
+    # if params[:category_id]
+    # # if params[:search]
+    #   # Categoryのデータベースのテーブルから一致するidを取得
+    #   @category = Category.find(params[:category_id])
+    #   # category_idと紐づく投稿を取得
+    #   # post = @categories.posts
+    #   @posts = @category.posts.order(created_at: :desc).all
+    # else
+    #   # 投稿すべてを取得
+    #   @posts = Post.order(created_at: :desc).all
+    # end
+    # binding.pry
+    @post = Post.new
+    @posts = Post.includes(:user).page(params[:page]).per(5).order(created_at: :desc)
     @likes = Like.where(user_id: current_user)
   end
 
@@ -74,21 +78,25 @@ class PostsController < ApplicationController
 
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @posts = Post.search(params[:search])
+    @posts = Post.search(params[:keyword])
   end
 
   private
-    # コールバックを使用して、アクション間で共通の設定または制約を共有します。
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # コールバックを使用して、アクション間で共通の設定または制約を共有します。
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # 信頼できるパラメータのリストのみを許可します。
-    def post_params
-      params.require(:post).permit(:title, :content, :image, :category_id).merge(user_id: current_user.id)
-    end
+  # 信頼できるパラメータのリストのみを許可します。
+  def post_params
+    params.require(:post).permit(:title, :content, :image, :category_id).merge(user_id: current_user.id)
+  end
 
-    def category_params
-      params.require(:category).permit(:name)
-    end
+  def category_params
+    params.require(:category).permit(:name)
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
 end

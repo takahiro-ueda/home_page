@@ -9,12 +9,14 @@ Rails.application.routes.draw do
     end
   end
   resources :posts do
-    resources :likes, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
     resources :categories
     collection do
       get 'search'
     end
+  end
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
 end
