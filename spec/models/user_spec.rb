@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe User do
   describe '#create' do
-    it "ニックネーム,emailアドレス,年齢,性別,パスワード,確認パスワードが存在すれば登録できること" do
+    it "全て入力されていれば登録できること" do
       user = build(:user)
       expect(user).to be_valid
     end
