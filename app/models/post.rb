@@ -27,6 +27,5 @@ class Post < ApplicationRecord
 
   validates :title, :content, :category_id, presence: true, unless: :image?
   validates :content, presence: true, length: { maximum: 2000 }
-
   
 end

@@ -36,19 +36,12 @@
       </div>
 
       <div class="field">
-        <%= f.label :profile, 'プロフィール' %><br />
-        <div class="field__list">
-          <%= f.rich_text_area :profile, autofocus: true %>
-        </div>
-      </div>
-
-      <div class="field">
         <%= f.label :password, 'パスワード' %> <i>(変更しない場合は空白OK)</i><br />
         <div class="field__list">
           <%= f.password_field :password, autocomplete: "new-password" %>
           <% if @minimum_password_length %>
             <br />
-            <em><%= @minimum_password_length %> characters minimum</em>
+            <em><%= @minimum_password_length %> 文字以上</em>
           <% end %>
         </div>
       </div>
