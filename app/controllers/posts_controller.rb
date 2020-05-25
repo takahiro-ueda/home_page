@@ -4,18 +4,6 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search]
 
   def index
-    # if params[:category_id]
-    # # if params[:search]
-    #   # Categoryのデータベースのテーブルから一致するidを取得
-    #   @category = Category.find(params[:category_id])
-    #   # category_idと紐づく投稿を取得
-    #   # post = @categories.posts
-    #   @posts = @category.posts.order(created_at: :desc).all
-    # else
-    #   # 投稿すべてを取得
-    #   @posts = Post.order(created_at: :desc).all
-    # end
-    # binding.pry
     @post = Post.new
     @posts = Post.includes(:user).page(params[:page]).per(5).order(created_at: :desc)
     @likes = Like.where(user_id: current_user)
