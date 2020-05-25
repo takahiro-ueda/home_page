@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PostsController do
+RSpec.describe PostsController, type: :controller do
   describe 'GET #new' do
     it "new.html.erbに遷移すること" do
       get :new
