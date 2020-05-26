@@ -24,3 +24,7 @@ require('tree .')
 require("trix")
 require("@rails/actiontext")
 
+//= require jquery
+//= require rails-ujs
+//= require turbolinks
+//= require_tree .

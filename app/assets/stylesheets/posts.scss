@@ -128,6 +128,9 @@ body{
       padding: 0;
       padding-left: 30px;
     }
+    .js-text-count {
+      height: 50px;
+    }
     &__btn{
       display: block;
       width: 30%;
@@ -141,3 +144,6 @@ body{
 // .actions {
 //   display: flex;
 // }
+.cnt_area, .cnt_danger{
+  color: #FF0000;
+} 
