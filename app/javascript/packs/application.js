@@ -23,4 +23,3 @@ require('tree .')
 
 require("trix")
 require("@rails/actiontext")
-

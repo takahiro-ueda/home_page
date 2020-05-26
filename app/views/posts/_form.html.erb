@@ -12,13 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :title, 'タイトル' %>
+    <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+    <%= form.label :category_id, 'カテゴリ' %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "category_select" }) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, 'ブログ記事（最大2000文字）' %>
+    <%= form.rich_text_area :content, placeholder: :ブログ本文, class: :form__text %>
   </div>
 
   <div class="field">
@@ -27,6 +32,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit '投稿する', class: :form__btn %>
   </div>
+  <%= button_to '戻る', posts_path(@post.id), class: "postManage__back" %>
 <% end %>
