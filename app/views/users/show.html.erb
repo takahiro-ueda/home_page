@@ -1,7 +1,16 @@
 <%= render partial: 'posts/header' %>
-<div class="postTitle">
-  <%= @user.nickname %>さんの投稿一覧
+<% breadcrumb :blog %>
+<div class="blog__contents">
+  <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+    <%= hidden_field_tag :search, true %>
+  <% end %>
+  <div class="postTitle">
+    <%= @user.nickname %>さんの投稿一覧
+  </div>
+  <% @posts.each do |post| %>
+    <%= render partial: "posts/post", locals: { post: post } %>
+  <% end %>
+  <%= paginate(@posts) %>
 </div>
-<% @posts.each do |post| %>
-  <%= render partial: "posts/post", locals: { post: post } %>
-<% end %>
