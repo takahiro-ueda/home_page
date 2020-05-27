@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get 'profile', to: 'users#profile'
       get 'overview', to: 'users#overview'
+      get 'problem', to: 'users#problem'
     end
   end
   resources :posts do
