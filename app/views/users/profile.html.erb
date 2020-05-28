@@ -1,10 +1,10 @@
 <%= render partial: 'posts/nolist-header' %>
 <div class="content">
-  <div class="content__user">
-    <div class="content__user__left">
+  <div class="content__profile">
+    <div class="content__profile__left">
       <h2> プロフィール </h2>
-      <img src="/line_743968890967290.jpg", class="content__user__left__image">
-      <div class="content__user__left__field">
+      <img src="/line_743968890967290.jpg", class="content__profile__left__image">
+      <div class="content__profile__left__field">
         <%= form_with html: { method: :put } do |f| %>
           <div class="field">
 
@@ -36,11 +36,11 @@
           </div>
         <% end %>
       </div>
-      <%= link_to "戻る", :back, class: "content__user__left__back" %>
+      <%= link_to "戻る", :back, class: "content__profile__left__back" %>
     </div>
 
-    <div class="content__user__right">
-      <div class="content__user__right__profile">
+    <div class="content__profile__right">
+      <div class="content__profile__right__list">
       <%= form_with html: { method: :put } do |f| %>
         <%= f.label :profile, '自己紹介' %><br />
         前職は大阪の信用金庫で2月から未経験でテックキャンプに通っている駆け出しエンジニアです！<br />

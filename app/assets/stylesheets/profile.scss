@@ -1,7 +1,7 @@
 .content {
   width: 100vw;
   height: 100%;
-  &__user {
+  &__profile {
     background-image: url(https://www.canva.com/ja_jp/learn/wp-content/uploads/sites/10/2020/03/zoom-backgrounds-banner.png);
     width: 100%;
     padding: 50px;
@@ -11,7 +11,6 @@
     display: flex;
     a{
       text-decoration: none;
-      color: white;
     }
     &__left {
       float: left;
@@ -21,6 +20,20 @@
         clear: both;
         content: "";
         display: block;
+      }
+      h2 {
+        margin-bottom: 10px;
+        letter-spacing: 3px;
+        font-size: 40px;
+        font-weight: 200px;
+  
+        &:after {
+          content: '';
+          display: block;
+          width: 180px;
+          margin-top: 5px;
+          border-bottom: 1px solid #38aef0;
+        }
       }
       &__image {
         width: 250px;
@@ -76,13 +89,13 @@
           opacity: 1;
         }
       }
-      
     }
     &__right {
       float: right;
       width: 70%;
       position: relative;
-      &__profile {
+      &__list {
+        background:rgba(255,255,255,0.45);
         a {
           color:blue;
           &:hover {
