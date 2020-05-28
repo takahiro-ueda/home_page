@@ -1,7 +1,6 @@
 <%= render partial: 'header' %>
 <% breadcrumb :blog %>
 <div class="blog__contents">
-  <h2>新着投稿</h2>
   <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
     <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "search-input" %>
     <%= form.submit "検索", class: "search-btn" %>
