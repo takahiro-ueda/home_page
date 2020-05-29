@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    category = Category.find(post_params[:category_id])
+    category = Category.find_by(params[:category_id])
     @post = category.posts.create(post_params)
     respond_to do |format|
       if @post.save

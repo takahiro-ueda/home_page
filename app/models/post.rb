@@ -25,7 +25,8 @@ class Post < ApplicationRecord
     end
   end
 
-  validates :title, :content, :category_id, presence: true, unless: :image?
+  validates :title, :content, presence: true, unless: :image?
+  validates :category_id, presence: true
   validates :content, length: { maximum: 2000, message: "入力は２０００文字までです。" }
   
 end

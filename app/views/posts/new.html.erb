@@ -1,43 +1,53 @@
 <%= render partial: 'header' %>
+<% breadcrumb :new_blog %>
+<%= breadcrumbs separator: " &rsaquo; " %>
 <div class="blog__contents">
-  <div class="blog__content__title">
-  <h3>新規記事の作成</h3>
-  <%= form_with(model: @post, class: :form, local: true) do |form| %>
-    <% if @post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@post.errors.count, "件のエラーにより") %> この投稿は保存できませんでした。</h2>
+  <div class="blog__contents__blog">
+    <div class="blog__contents__blog__list">
+      <h2>新規記事の作成</h2>
+    </div>
+    <div class="field">
+    <%= form_with(model: @post, class: :form, local: true) do |form| %>
+      <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "件のエラーにより") %> この投稿は保存できませんでした。</h2>
 
-        <ul>
-          <% @post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+      <div class="field__tag">
+        <div class="field__tag__title">
+          <%= form.label :title, 'タイトル' %>
+          <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
+        </div>
+
+        <div class="field__tag__category">
+          <%= form.label :category_id, 'カテゴリ' %>
+          <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, { class: "field__tag__category__select-box", id: "category_select" } %>
+        </div>
       </div>
+
+      <div class="field__blog">
+        <%= form.label :content, 'ブログ記事' %>
+        <%= form.rich_text_area :content, placeholder: :ブログ本文, class: 'form__text js-text' %>
+        <P class="js-text-count"></P>
+        <%# <P class="js-text-count pull-right"></P> %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit '投稿する', class: :form__btn %>
+      </div>  
+    </div>
     <% end %>
-
-    <div class="field">
-      <%= form.label :title, 'タイトル' %>
-      <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
-    </div>
-
-    <div class="field">
-      <%= form.label :category_id, 'カテゴリ' %>
-      <%= form.collection_select(:category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, { class: "category_select-box", id: "category_select" }) %>
-    </div>
-
-    <div class="field">
-      <%= form.label :content, 'ブログ記事' %>
-      <%= form.rich_text_area :content, placeholder: :ブログ本文, class: 'form__text js-text' %>
-      <P class="js-text-count"></P>
-      <%# <P class="js-text-count pull-right"></P> %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit '投稿する', class: :form__btn %>
-    </div>  
-    <%= button_to '戻る', posts_path(@post.id), class: "postManage__back" %>
-  <% end %>
   </div>
+  <%= link_to  posts_path(@post.id), class: "postManage__back" do%>
+    <i class="fa fa-reply"></i>
+  <% end %>
 </div>
 
 <script>

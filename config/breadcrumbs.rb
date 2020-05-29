@@ -20,6 +20,12 @@ crumb :log_in do
   parent :blog
 end
 
+# ブログ
+crumb :new_blog do
+  link "新規投稿", new_post_path
+  parent :blog
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
