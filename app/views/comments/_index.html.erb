@@ -1,29 +1,31 @@
 <!-- コメント内容(２件) ------------------------------------------------------------------>
-<%= comments.count %>件コメント
-<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6> 
-<%# <%= link_to @posts, 'もっと見る....', remote: true, id: 'more_link' %> 
+<div class="comment__area__count">
+  <%= comments.count %>件コメント
+  <%# <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6> %>
+  <%= link_to @posts, 'もっと見る....', remote: true, class: "comment__area__count__more", id: 'more_link' %>
+</div>
 <% comments.first(2).each do |comment| %>
   <% unless comment.id.nil? %>
-    <li class="comment-container">
-      <div class="comment-box">
-        <div class="comment-avatar">
+    <li class="comment__area__container">
+      <div class="comment__area__container__box">
+        <div class="comment__area__container__box__avatar">
           <%# <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %>  
         </div>
-        <div class="comment-text">
-          <p><%= link_to "#{comment.user.nickname}", users_path(comment.user.id) %></p> 
+        <div class="comment__area__container__box__text">
+          <p><%= link_to "#{comment.user.nickname}", users_path(comment.user.id) %></p>
+            <span class="comment__area__container__box__text__date pull-right">
+              <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+            </span>
             <% if comment.user == current_user %>
-              <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }, class: "comment_destroy" do %>
-                <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %> 
+              <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }, class: "comment__area__container__box__text__destroy" do %>
+                <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment__area__container__box__text__destroy" do %> 
                   <i class="fa fa-trash" style="color: black;"></i>
                 <% end %>
               <% end %>
             <% end %>
-          <div class="comment-entry">
-            <%= comment.content %>
-          </div>
-          <span class="comment-date pull-right">
-            <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-          </span>
+        </div>
+        <div class="comment__area__container__box__entry">
+          <%= comment.content %>
         </div>
       </div>
     </li>
@@ -33,27 +35,79 @@
 <div class="collapse" id="collapseExample">
   <% comments.offset(2).each do |comment| %>
     <% unless comment.id.nil? %>
-      <li class="comment-container">
-        <div class="comment-box">
-          <div class="comment-avatar">
-            <%# <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %> 
+      <li class="comment__area__container">
+        <div class="comment__area__container__box">
+          <div class="comment__area__container__box__avatar">
+            <%# <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %>  
           </div>
-          <div class="comment-text">
+          <div class="comment__area__container__box__text">
             <p><%= link_to "#{comment.user.nickname}", users_path(comment.user.id) %></p>
-            <% if comment.user == current_user %>
-              <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
-                <i class="fa fa-trash" style="color: black;"></i>
+              <span class="comment__area__container__box__text__date pull-right">
+                <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              </span>
+              <% if comment.user == current_user %>
+                <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: '本当に削除しますか?' }, class: "comment__area__container__box__text__destroy" do %>
+                  <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment__area__container__box__text__destroy" do %> 
+                    <i class="fa fa-trash" style="color: black;"></i>
+                  <% end %>
+                <% end %>
               <% end %>
-            <% end %>
-            <div class="comment-entry">
-              <%= comment.content %>
-            </div>
-            <span class="comment-date pull-right">
-              <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-            </span>
+          </div>
+          <div class="comment__area__container__box__entry">
+            <%= comment.content %>
           </div>
         </div>
       </li>
     <% end %>
   <% end %>
 </div>
+
+<script>
+const defaultDispCnt = 2; // 初期表示件数
+const addDispCnt = 3;     // 追加表示件数
+
+(function ($) {
+  $(function () {
+    let maxDispCnt = 0;     // 最大表示件数
+    let currentDispCnt = 0; // 現在の表示件数
+    let tileList = $('.comment__area__container').children('li'); // 一覧のli子要素をすべて取得
+
+    // 一覧の初期表示
+    $(.comment__area__container).each(function (i, elem) {
+      // 初期表示件数のみ表示
+      if (i < defaultDispCnt) {
+        $(this).show();
+        currentDispCnt++;
+      }
+      maxDispCnt++;
+
+      // もっと見るボタンを表示
+      let displayed = 0;
+      if (maxDispCnt > currentDispCnt && !displayed) {
+        $('.comment__area__count__more').show();
+        displayed = 1;
+      }
+    });
+
+    // もっと見るボタンクリックイベント
+    $('.comment__area__count__more').click(function () {
+      let newCount = currentDispCnt + addDispCnt; // 新しく表示する件数
+
+      // 新しく表示する件数のみ表示
+      $(tileList).each(function (i, elem) {
+        if (currentDispCnt <= i && i < newCount) {
+          $(this).show();
+          currentDispCnt++;
+        }
+      });
+
+      // もっと見るボタンを非表示
+      if (maxDispCnt <= newCount) {
+        $(this).hide();
+      }
+
+      return false;
+    });
+  });
+}(jQuery));
+</script>

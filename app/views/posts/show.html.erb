@@ -34,19 +34,37 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="comment">
+  <ul>
+    <li class="comment__create">
+      <h3 class="text-left title">コメント一覧</h3>
+    </li>
+    <div id="comments_area", class="comment__area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, post: @post, posts: @posts } %>
+    </div>
+  </ul>
+  <% if user_signed_in? %>
+    <div class="comment__create">
+      <h3 class="text-left">コメント</h3>
+      <div class="comment__create__text">
+        <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%# <div class="comment">
   <ul>
     <li class="comment-create">
       <h3 class="text-left title">コメント一覧</h3>
     </li>
     <div id="comments_area">
       <%= render partial: 'comments/index', locals: { comments: @comments, post: @post, posts: @posts } %>
-    </div>
+    <%# </div>
   </ul>
   <% if user_signed_in? %>
-    <div class="comment-create">
+    <%# <div class="comment-create">
       <h3 class="text-left">コメントする</h3>
       <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-    </div>
+    <%# </div>
   <% end %>
-</div>
+<%# </div> %>
