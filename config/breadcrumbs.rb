@@ -26,6 +26,12 @@ crumb :new_blog do
   parent :blog
 end
 
+# ブログ
+crumb :show_blog do
+  link "投稿詳細", post_path
+  parent :blog
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

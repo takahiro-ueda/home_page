@@ -1,27 +1,37 @@
 <%= render partial: 'nolist-header' %>
+<% breadcrumb :show_blog %>
+<%= breadcrumbs separator: " &rsaquo; " %>
 <div class="blog__contents">
-  <div class="postTitle">
-    <%= @post.title %>
-  </div>
-  <span>【カテゴリ】</span>
-  <% @post.categories.each do |category| %>
-    <%= category.name %>
-  <% end %>
-  <div class="postDate">
-    <%= @post.created_at %>
-  </div>
-  <div class="postAuthor">
-  </div>
-  <% if user_signed_in? && current_user.id == @post.user_id %>
-    <div class="postManage">
-      <%= link_to "編集", edit_post_path(@post.id), class: "postManage__edit" %>
-      <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "postManage__delete" %>
-      <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
+  <div class="blog__contents__lists">
+    <div class="blog__contents__lists__postTitle">
+      <%= @post.title %>
     </div>
-  <% end %>
-  <%= render partial: 'likes/like', locals: { post: @post, posts: @posts, likes: @likes, like: @like } %> 
-  <div class="postText">
-    <%= @post.content %>
+    <div class="blog__contents__lists__sublist">
+      <div class="blog__contents__lists__sublist__postCategory">
+        <span>【カテゴリ】</span>
+        <% @post.categories.each do |category| %>
+          <%= category.name %>
+        <% end %>
+      </div>
+      <div class="blog__contents__lists__sublist__postDate">
+        <%= @post.created_at %>
+      </div>
+      <div class="blog__contents__lists__sublist__postAuthor">
+      </div>
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <div class="blog__contents__lists__sublist__postManage">
+          <%= link_to "編集", edit_post_path(@post.id), class: "blog__contents__lists__sublist__postManage__edit" %>
+          <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "blog__contents__lists__sublist__postManage__delete" %>
+          <%= link_to '戻る', posts_path(@post.id), class: "blog__contents__lists__sublist__postManage__back" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="blog__contents__lists__like">
+      <%= render partial: 'likes/like', locals: { post: @post, posts: @posts, likes: @likes, like: @like } %> 
+    </div>
+    <div class="blog__contents__lists__postText">
+      <%= @post.content %>
+    </div>
   </div>
 </div>
 <div class="row">
