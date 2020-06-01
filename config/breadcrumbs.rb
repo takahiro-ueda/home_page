@@ -8,9 +8,15 @@ crumb :blog do
   parent :root
 end
 
+# ユーザー編集
+crumb :edit_user do
+  link "ユーザー編集", edit_user_registration_path
+  parent :root
+end
+
 # 新規登録
 crumb :sign_in do
-  link "新規登録", new_post_path
+  link "新規登録", new_user_registration_path
   parent :blog
 end
 
