@@ -2,9 +2,15 @@ crumb :root do
   link "Home", root_path
 end
 
-# ブログ
+# ブログ（全投稿）
 crumb :blog do
-  link "ブログ一覧", posts_path
+  link "投稿一覧(全投稿)", posts_path
+  parent :root
+end
+
+# ブログ（特定ユーザー投稿）
+crumb :nickname_blog do
+  link "投稿一覧(ユーザー別)", posts_path
   parent :root
 end
 
