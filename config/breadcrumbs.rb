@@ -10,7 +10,13 @@ end
 
 # ブログ（特定ユーザー投稿）
 crumb :nickname_blog do
-  link "投稿一覧(ユーザー別)", posts_path
+  link "投稿一覧(ユーザー別)", user_path
+  parent :root
+end
+
+# ブログ（特定ユーザー投稿）
+crumb :category_blog do
+  link "投稿一覧(カテゴリ別)", post_category_path
   parent :root
 end
 
