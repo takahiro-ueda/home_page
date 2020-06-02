@@ -20,6 +20,12 @@ crumb :category_blog do
   parent :root
 end
 
+# ブログ（検索投稿）
+crumb :seach_blog do
+  link "投稿一覧(検索別)", search_posts_path
+  parent :root
+end
+
 # ユーザー編集
 crumb :edit_user do
   link "ユーザー編集", edit_user_registration_path
