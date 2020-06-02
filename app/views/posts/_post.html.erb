@@ -24,7 +24,8 @@
     </div>
     <div class="blog__content__right__text">
       <div class="blog__content__right__text__blog">
-        <%= post.content %>
+        <%= strip_tags(post.content.to_s).gsub(/[\n]/,"").strip.truncate(50) %>
+        <%= link_to '続きを読む', post_path(post), class: "blog__content__right__text__blog__number" %>
       </div>
     </div>
   </div>

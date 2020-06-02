@@ -134,7 +134,7 @@ header {
       height: 1000px;
       width: 100%;
       display: flex;
-      padding: 20px 50px 20px 40px;
+      padding: 20px;
       background-color: white;
       &__left {
         width: 100%;
@@ -192,7 +192,7 @@ header {
           }
           &__right{
             width: calc(100% - 100px);
-            height: 50px;
+            height: 100px;
             position: relative;
             &__tag {
               display: flex;
@@ -218,9 +218,9 @@ header {
                   margin: 0 auto;
                   a {
                     text-decoration: none;
-                    color: black;
+                    color: skyblue;
                     &:hover {
-                      color: skyblue;
+                      color: black;
                     }
                   }
                   &__btn{
@@ -238,6 +238,13 @@ header {
               height: 40px;
               
               &__blog {
+                &__number {
+                  color: skyblue;
+                  text-decoration: none;
+                  &:hover {
+                    color: black;
+                  }
+                }
                 .trix-content {
                   font-size: 15px;
                 }
