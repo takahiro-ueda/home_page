@@ -2,7 +2,7 @@
   <div class="header__content">
     <div class="header__content__left">
       <%= link_to "Tree Blog", '/', class: "header__content__left__title" %>
-      <div class="header__content__left__sub-title">半歩先の目標設定・達成</div>
+      <div class="header__content__left__sub-title">半歩先の目標設定・達成の積み重ね</div>
     </div>
     <div class="header__content__right">
       <div class="header__content__right__icon">
@@ -29,18 +29,18 @@
     </div>
     <div class="content__main">
       <div class="content__main__left">
-        <div class="content__main__left__header">
+        <div class="content__main__left__seach">
           <h2>新着投稿</h2>
-          <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-            <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "search-input" %>
-            <%= form.submit "検索", class: "search-btn" %>
+          <%= form_with(url: search_posts_path, local: true, method: :get, class: "blog__contents__seach__form") do |form| %>
+            <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "blog__contents__seach__form__input" %>
+            <%= form.submit "検索", class: "blog__contents__seach__form__btn" %>
             <%= hidden_field_tag :search, true %>
           <% end %>
-          <% @posts.each do |post| %>
-            <%= render partial: "posts/post", locals: { post: post } %>
-          <% end %>
-          <%= paginate(@posts) %>
         </div>
+        <% @posts.each do |post| %>
+          <%= render partial: "posts/post", locals: { post: post } %>
+        <% end %>
+        <%= paginate(@posts) %>
       </div>
       <div class="content__main__right">
         <ul class="content__main__right__side">
@@ -83,29 +83,12 @@
 </div>
 <footer class="pcFooter">
   <div class="pcFooter__footer">
-  <ul class="pcFooter__footer__contents">
-    <li class="pcFooter__footer__contents__content">
-      <h2 class="pcFooter__footer__contents__content__head">管理者</h2>
-      <ul>
-        <li><a href="#">プロフィール</a></li>
-        <li><a href="#">制作概要</a></li>
-      </ul>
-    </li>
-    <li class="pcFooter__footer__contents__content">
-      <h2 class="pcFooter__footer__contents__content__head">ブログ</h2>
-      <ul>
-        <li><a href="#">プログラミング日記</a></li>
-        <li><a href="#">ランニング日記</a></li>
-      </ul>
-    </li>
-    <li class="pcFooter__footer__contents__content">
-      <h2 class="pcFooter__footer__contents__content__head">SNS</h2>
-      <ul>
-        <li><a class="fa fa-github" href="https://github.com/takahiro-ueda">GitHub</a></li>
-        <li><a a class="fa fa-twitter" href="https://twitter.com/home">Twitter</a></li>
-      </ul>
-    </li>
-  </ul> 
+    <%= link_to("https://twitter.com/home") do %>
+      <%= fa_icon("twitter") %>
+    <% end %>
+    <%= link_to("https://github.com/takahiro-ueda") do %>
+      <%= fa_icon("github") %>
+    <% end %>
   </div>
-  <p>© Tree blog. 2020.4~</p>
+  <div class="pcFooter__text">© Tree blog. 2020.4~</div>
 </footer>

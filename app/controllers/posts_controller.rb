@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    category = Category.find(post_params[:category_id])
+    category = Category.find_by(params[:category_id])
     @post = category.posts.create(post_params)
     respond_to do |format|
       if @post.save
@@ -67,6 +67,7 @@ class PostsController < ApplicationController
   def search
     #Viewのformで取得したパラメータをモデルに渡す
     @posts = Post.search(params[:keyword])
+    @posts = Post.includes(:user).page(params[:page]).per(5).order(created_at: :desc)
   end
 
   private

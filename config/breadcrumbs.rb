@@ -2,21 +2,63 @@ crumb :root do
   link "Home", root_path
 end
 
-# ブログ
+# ブログ（全投稿）
 crumb :blog do
-  link "ブログ一覧", posts_path
+  link "投稿一覧(全投稿)", posts_path
+  parent :root
+end
+
+# ブログ（特定ユーザー投稿）
+crumb :nickname_blog do
+  link "投稿一覧(ユーザー別)", user_path
+  parent :root
+end
+
+# ブログ（特定ユーザー投稿）
+crumb :category_blog do
+  link "投稿一覧(カテゴリ別)", post_category_path
+  parent :root
+end
+
+# ブログ（検索投稿）
+crumb :seach_blog do
+  link "投稿一覧(検索別)", search_posts_path
+  parent :root
+end
+
+# ユーザー編集
+crumb :edit_user do
+  link "ユーザー編集", edit_user_registration_path
   parent :root
 end
 
 # 新規登録
 crumb :sign_in do
-  link "新規登録", new_post_path
+  link "新規登録", new_user_registration_path
   parent :blog
 end
 
 # ログイン
 crumb :log_in do
   link "ログイン", new_user_session_path
+  parent :blog
+end
+
+# パスワード
+crumb :password do
+  link "パスワード", new_user_password_path
+  parent :log_in
+end
+
+# ブログ
+crumb :new_blog do
+  link "新規投稿", new_post_path
+  parent :blog
+end
+
+# ブログ
+crumb :show_blog do
+  link "投稿詳細", post_path
   parent :blog
 end
 

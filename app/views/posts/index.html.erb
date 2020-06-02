@@ -1,11 +1,15 @@
 <%= render partial: 'header' %>
 <% breadcrumb :blog %>
+<%= breadcrumbs separator: " &rsaquo; " %>
 <div class="blog__contents">
-  <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
-    <%= hidden_field_tag :search, true %>
-  <% end %>
+  <div class="blog__contents__seach">
+    <h2>投稿一覧</h2>
+    <%= form_with(url: search_posts_path, local: true, method: :get, class: "blog__contents__seach__form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "blog__contents__seach__form__input" %>
+      <%= form.submit "検索", class: "blog__contents__seach__form__btn" %>
+      <%= hidden_field_tag :search, true %>
+    <% end %>
+  </div>
   <% @posts.each do |post| %>
     <%= render partial: "post", locals: { post: post } %>
   <% end %>

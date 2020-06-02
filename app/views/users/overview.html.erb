@@ -1,19 +1,27 @@
 <%= render partial: 'posts/nolist-header' %>
 <div class="content">
-  <div class="content__user">
-    <div class="content__user__left">
+  <div class="content__overview">
+    <div class="content__overview__left">
       <h2> 制作概要 </h2>
-      <div class="content__user__left__list">
-      【更新日時】2020/5/25現在<br>
-      【カテゴリ】<br>
-      ・プログラミング学習<br>
-      ・ランニング練習<br>
+      <div class="content__overview__left__category">
+        <div class="content__overview__left__category__time">
+        【更新日時】2020/5/25現在
+        </div>
+        <div class="content__overview__left__category__list">
+        【カテゴリ】
+        </div>
+        <div class="content__overview__left__category__list">
+        ・プログラミング学習
+        </div>
+        <div class="content__overview__left__category__list">
+        ・ランニング練習
+        </div>
       </div>
-      <%= link_to "戻る", :back, class: "content__user__left__back" %>
+      <%= link_to "戻る", :back, class: "content__overview__left__back" %>
     </div>
 
-    <div class="content__user__right">
-      <div class="content__user__right__overview">
+    <div class="content__overview__right">
+      <div class="content__overview__right__list">
         【目的】<br/>
         ・アウトプットは自分の頭の整理になる<br>
         ・転職や仕事を紹介してもらう時にアピールできる<br>
@@ -35,6 +43,7 @@
         今後もこれまで経験したことのない技術や業務のシステムに挑戦していきたい！
         何年経っても成長できる要素はあると学生時代の経験から学んだので日々の積み上げを大切にしてクライアントのニーズに答えれるようなサービスを制作していきたい。
         そのため基本的には、ITを活用して世の中の人々の役に立つものを作るというスタンスが達成できれば良いので言語などには囚われてなく必要であればどの言語でも学ぶ意欲があります。<br />
+        <br>
         Java,PHP,C言語の学習予定 
       </div>
     </div>

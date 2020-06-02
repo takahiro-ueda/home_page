@@ -1,13 +1,16 @@
 <%= render partial: 'posts/nolist-header' %>
-<% breadcrumb :blog %>
+<% breadcrumb :category_blog %>
+<%= breadcrumbs separator: " &rsaquo; " %>
 <div class="blog__contents">
-  <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
-    <%= hidden_field_tag :search, true %>
-  <% end %>
-  <div class="postTitle">
-    <%= @category.name %>  投稿一覧
+  <div class="blog__contents__seach">
+    <div class="blog__contents__seach__postTitle">
+      <%= @category.name %>  投稿一覧
+    </div>
+    <%= form_with(url: search_posts_path, local: true, method: :get, class: "blog__contents__seach__form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "blog__contents__seach__form__input" %>
+      <%= form.submit "検索", class: "blog__contents__seach__form__btn" %>
+      <%= hidden_field_tag :search, true %>
+    <% end %>
   </div>
   <% @posts.each do |post| %>
     <%= render partial: "posts/post", locals: { post: post } %>
