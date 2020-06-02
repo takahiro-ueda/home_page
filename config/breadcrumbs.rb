@@ -38,6 +38,12 @@ crumb :log_in do
   parent :blog
 end
 
+# パスワード
+crumb :password do
+  link "パスワード", new_user_password_path
+  parent :log_in
+end
+
 # ブログ
 crumb :new_blog do
   link "新規投稿", new_post_path
