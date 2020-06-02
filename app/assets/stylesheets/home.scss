@@ -257,11 +257,9 @@ header {
         display: flex;
         width: 40%;
         border-left: 1px solid #e0e0e0;
-        
         &__side {
           margin: 0 auto;
           display: flex;
-          
           &__list {
             list-style: none;
             
@@ -288,7 +286,7 @@ header {
             ul {
               margin-bottom: 40px;
             }
-            li {
+            li, p {
               display: flex;
               font-size: 15px;
               margin-bottom: 10px;
@@ -317,6 +315,9 @@ header {
             h4 {
               font-size: 15px;
               margin-left: 10px;
+              .stylist-name {
+                color: skyblue;
+              }
             }
           }
         }
