@@ -13,8 +13,10 @@ body{
     justify-content: space-between;
     position: flex;
     &__title{
-      font-size: 30px;
+      font-size: 35px;
       line-height: 56px;
+      // font-family: 'Londrina Shadow', cursive;
+      font-family: 'Montserrat Subrayada', sans-serif;
       &__text{
         text-decoration: none;
         color: #fff;
