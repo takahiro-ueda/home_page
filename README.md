@@ -1,27 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+実装機能】<br>
+<必須><br>
+・管理ユーザ登録・削除機能、管理ユーザログイン機能<br>
+・記事一覧投稿機能、記事詳細表示機能、記事投稿・削除機能、rails6 actiontext機能<br>
+・画像投稿、ページネーション機能<br>
+・単体テスト、機能テスト、統合テスト<br>
+<br>
+<応用><br>
+・Googleカレンダー、カテゴリ機能、非同期コメント機能、非同期いいね機能<br>
+・投稿文字数カウント機能、検索機能、パンくず機能<br>
+・slick導入でスライド、もっと見る機能(投稿部分)、もっと見る機能(コメント部分)
 
 ## users(ユーザー)
 |Column|Type|Options|
