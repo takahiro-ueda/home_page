@@ -1,7 +1,6 @@
 <!-- コメント内容(２件) ------------------------------------------------------------------>
 <div class="comment__area__count">
-  <%# <%= comments.count %>
-  <%= comments.where(post_id: post.id).count %>件コメント
+  <%= comments.count %>件コメント
   <div class="comment__area__count__more", id='more_link' data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</div>
 </div>
 <% comments.first(3).each do |comment| %>
@@ -61,53 +60,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%# <script>
-const defaultDispCnt = 2; // 初期表示件数
-const addDispCnt = 9;     // 追加表示件数
-
-(function ($) {
-  $(document).on('turbolinks:load', function(){
-    let maxDispCnt = 0;     // 最大表示件数
-    let currentDispCnt = 0; // 現在の表示件数
-    let tileList = $('.comment__area__container').children('li'); // 一覧のli子要素をすべて取得
-
-    // 一覧の初期表示
-    $(.comment__area__container).each(function (i, elem) {
-      // 初期表示件数のみ表示
-      if (i < defaultDispCnt) {
-        $(this).show();
-        currentDispCnt++;
-      }
-      maxDispCnt++;
-
-      // もっと見るボタンを表示
-      let displayed = 0;
-      if (maxDispCnt > currentDispCnt && !displayed) {
-        $('.comment__area__count__more').show();
-        displayed = 1;
-      }
-    });
-
-    // もっと見るボタンクリックイベント
-    $('.comment__area__count__more').click(function () {
-      let newCount = currentDispCnt + addDispCnt; // 新しく表示する件数
-
-      // 新しく表示する件数のみ表示
-      $(tileList).each(function (i, elem) {
-        if (currentDispCnt <= i && i < newCount) {
-          $(this).show();
-          currentDispCnt++;
-        }
-      });
-
-      // もっと見るボタンを非表示
-      if (maxDispCnt <= newCount) {
-        $(this).hide();
-      }
-
-      return false;
-    });
-  });
-}(jQuery));
-</script> %>
