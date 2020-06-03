@@ -332,7 +332,7 @@ PLATFORMS
 DEPENDENCIES
   actiontext
   bootsnap (>= 1.4.2)
-  bootstrap-sass (= 3.3.6)
+  bootstrap-sass
   byebug
   capybara (>= 2.15)
   carrierwave
