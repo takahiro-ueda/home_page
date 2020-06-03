@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @likes = Like.where(post_id: params[:id])
     @comment = Comment.new
     #新着順で表示
-    @comments = @post.comments.includes(:user)#.order(created_at: :desc)
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
     @category = @post.category_id
   end
 
