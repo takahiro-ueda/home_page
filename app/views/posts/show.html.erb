@@ -41,6 +41,7 @@
     </li>
     <div id="comments_area", class="comment__area">
       <%= render partial: 'comments/index', locals: { comments: @comments, post: @post, posts: @posts } %>
+      <%# <%= paginate(@comments) %>
     </div>
   </ul>
   <% if user_signed_in? %>

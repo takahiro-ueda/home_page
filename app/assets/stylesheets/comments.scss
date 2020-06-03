@@ -46,6 +46,7 @@
   .comment__area {
     
     &__count {
+      display: flex;
       margin-bottom: 20px;
       border-bottom: solid 0.1px #e0e0e0;
       &__more {
