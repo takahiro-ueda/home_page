@@ -1,6 +1,12 @@
 <div class="blog__content">
   <div class="blog__content__left">
-    <div class="blog__content__left__image"></div>
+    <div class="blog__content__left__image">
+      <% if post.image.url.present? %>
+        <%= image_tag "#{post.image.url }", height: '98px', width: '100px' %>
+      <% else %>
+        <%= image_tag "/Unknown.png", height: '98px', width: '100px' %>
+      <% end %>
+    </div>
   </div>
   <div class="blog__content__right">
     <div class="blog__content__right__tag">

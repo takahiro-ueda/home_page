@@ -32,11 +32,15 @@
         </div>
       </div>
 
+      <div class="field__image">
+        <%= form.label :image, '画像' %>
+        <%= form.file_field :image %>
+      </div>
+
       <div class="field__blog">
         <%= form.label :content, 'ブログ記事' %>
         <%= form.rich_text_area :content, placeholder: :ブログ本文, class: 'form__text js-text' %>
         <P class="js-text-count"></P>
-        <%# <P class="js-text-count pull-right"></P> %>
       </div>
 
       <div class="actions">

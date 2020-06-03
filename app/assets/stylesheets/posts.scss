@@ -94,8 +94,6 @@ body{
         margin-right: 20px;
         width: 100px;
         &__image{
-          height: 100px;
-          width: 100px;
           border: solid 1px;
         }
       }
@@ -174,6 +172,9 @@ body{
               height: 40px;
             }
           }
+        }
+        &__image {
+          margin-bottom: 30px;
         }
         &__blog {
           margin-bottom: 60px;
