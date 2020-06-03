@@ -1,11 +1,11 @@
 <div class="blog__content">
   <div class="blog__content__left">
     <div class="blog__content__left__image">
-      <%# <%=image_tag "#{post.image.url}" %>
-      <%# <% post.images.first(1).each do |image| %>
-        <%# <%= image_tag image.src.url, height: '100px', width: '100px' %>
-        <%= image_tag "#{post.image.url }", height: '100px', width: '100px' %>
-      <%# <% end %>
+      <% if post.image.url.present? %>
+        <%= image_tag "#{post.image.url }", height: '98px', width: '100px' %>
+      <% else %>
+        <%= image_tag "/Unknown.png", height: '98px', width: '100px' %>
+      <% end %>
     </div>
   </div>
   <div class="blog__content__right">
