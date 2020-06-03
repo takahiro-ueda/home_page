@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = Post.includes(:user).page(params[:page]).per(5).order(created_at: :desc)
     @likes = Like.where(user_id: current_user)
+    @posts = Post.includes(:images).order(created_at: :desc)
   end
 
   def show
