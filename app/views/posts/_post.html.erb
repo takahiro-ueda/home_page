@@ -24,7 +24,7 @@
           <%= link_to post.user.nickname, user_path(post.user), class: "blog__content__tag__right__bottom__userName__btn" %>
         </div> 
         <div class="blog__content__right__tag__center__date">
-          <%= post.created_at %>
+          <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
         </div>
       </div>
     </div>

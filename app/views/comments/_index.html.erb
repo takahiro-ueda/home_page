@@ -1,8 +1,8 @@
 <!-- コメント内容(２件) ------------------------------------------------------------------>
 <div class="comment__area__count">
-  <%= comments.count %>件コメント
+  <%# <%= comments.count %>
+  <%= comments.where(post_id: post.id).count %>件コメント
   <div class="comment__area__count__more", id='more_link' data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</div>
-  <%# <%= link_to @posts, 'もっと見る....', remote: true, class: "comment__area__count__more", id: 'more_link' %>
 </div>
 <% comments.first(3).each do |comment| %>
   <% unless comment.id.nil? %>
@@ -64,10 +64,10 @@
 
 <script>
 const defaultDispCnt = 2; // 初期表示件数
-const addDispCnt = 3;     // 追加表示件数
+const addDispCnt = 9;     // 追加表示件数
 
 (function ($) {
-  $(function () {
+  $(document).on('turbolinks:load', function(){
     let maxDispCnt = 0;     // 最大表示件数
     let currentDispCnt = 0; // 現在の表示件数
     let tileList = $('.comment__area__container').children('li'); // 一覧のli子要素をすべて取得
