@@ -41,8 +41,9 @@ class PostsController < ApplicationController
   end
 
   def update
+    posts = Post.find(params[:id])
     respond_to do |format|
-      if category = @post.categories.update(post_params[:category_id])
+      if @post.update(post_params)
         format.html { redirect_to @post, notice: '投稿が更新されました。' }
         format.json { render :show, status: :ok, location: @post }
       else

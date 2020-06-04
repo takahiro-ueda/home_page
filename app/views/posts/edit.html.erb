@@ -1,14 +1,67 @@
 <%= render partial: 'header' %>
+<% breadcrumb :edit_blog %>
+<%= breadcrumbs separator: " &rsaquo; " %>
 <div class="blog__contents">
-  <div class="blog__content__title">
-    投稿の編集
+  <div class="blog__contents__blog">
+    <div class="blog__contents__blog__list">
+      <h2>投稿の編集</h2>
+    </div>
+    <div class="field">
     <%= form_with model: @post, class: :form, local: true do |form| %>
-    <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
-    <%= form.label :content %>
-    <%= form.rich_text_area :content, placeholder: :ブログ本文, class: :form__text %>
-    <%= form.submit '投稿する', class: :form__btn %>
+      <div class="field__tag">
+        <div class="field__tag__title">
+          <%= form.label :title, 'タイトル' %>
+          <%= form.text_field :title, placeholder: :タイトル, class: :form__title %>
+        </div>
+        <div class="field__tag__category">
+          <%= form.label :category_id, 'カテゴリ' %>
+          <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, { class: "field__tag__category__select-box", id: "category_select" } %>
+        </div>
+      </div>
+      <div class="field__blog">
+        <%= form.label :content, 'ブログ記事' %>
+        <%= form.rich_text_area :content, placeholder: :ブログ本文, class: 'form__text js-text' %>
+        <P class="js-text-count"></P>
+      </div>
+      <div class="actions">
+        <%= form.submit '投稿する', class: :form__btn %>
+      </div>
+    </div>
     <% end %>
-    <%= link_to '戻る', posts_path(@post.id), class: "postManage__back" %>
   </div>
+  <%= link_to  posts_path(@post.id), class: "post__icon-back" do%>
+    <i class="fa fa-reply"></i>
+  <% end %>
 </div>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  // 処理（ページが読み込まれた時、フォームに残り何文字入力できるかを数えて表示する）
+
+  //フォームに入力されている文字数を数える
+  //\nは"改行"に変換して2文字にする。オプションフラグgで文字列の最後まで\nを探し変換する
+  var count = $(".js-text").text().replace(/\n/g, "改行").length;
+  //残りの入力できる文字数を計算
+  var now_count = 3000 - count;
+  //文字数がオーバーしていたら文字色を赤にする
+  if (count > 3000) {
+    $(".js-text-count").css("color","red");
+  }
+  //残りの入力できる文字数を表示
+  $(".js-text-count").text( "残り" + now_count + "文字");
+
+  $(".js-text").on("keyup", function() {
+    // 処理（キーボードを押した時、フォームに残り何文字入力できるかを数えて表示する）
+    //フォームのvalueの文字数を数える
+    var count = $(this).val().replace(/\n/g, "改行").length;
+    var now_count = 3000 - count;
+
+    if (count > 3000) {
+      $(".js-text-count").css("color","red");
+    } else {
+      $(".js-text-count").css("color","black");
+    }
+    $(".js-text-count").text( "残り" + now_count + "文字");
+  });
+});
+</script>

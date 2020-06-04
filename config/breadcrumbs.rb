@@ -50,16 +50,22 @@ crumb :password do
   parent :log_in
 end
 
-# ブログ
+# 新規投稿
 crumb :new_blog do
   link "新規投稿", new_post_path
   parent :blog
 end
 
-# ブログ
+# 投稿詳細
 crumb :show_blog do
   link "投稿詳細", post_path
   parent :blog
+end
+
+# 投稿編集
+crumb :edit_blog do
+  link "投稿編集", edit_post_path
+  parent :show_blog
 end
 
 # crumb :projects do
