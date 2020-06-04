@@ -15,7 +15,7 @@
         </div>
         <div class="field__tag__category">
           <%= form.label :category_id, 'カテゴリ' %>
-          <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, { class: "field__tag__category__select-box", id: "category_select" } %>
+          <%= form.collection_select :category_id, Category.all, :id, :name, { class: "field__tag__category__select-box", id: "category_select" } %>
         </div>
       </div>
       <div class="field__image">

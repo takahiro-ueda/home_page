@@ -21,13 +21,15 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.post_categories.build
+    # @category = Category.all
   end
 
   def edit
   end
 
   def create
-    category = Category.find_by(params[:category_id])
+    # binding.pry
+    category = Category.find(post_params[:category_id])
     @post = category.posts.create(post_params)
     respond_to do |format|
       if @post.save
@@ -41,7 +43,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    posts = Post.find(params[:id])
+    # category = @post.categories.update(post_params[:category_id])
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: '投稿が更新されました。' }
