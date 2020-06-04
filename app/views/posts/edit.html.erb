@@ -18,6 +18,10 @@
           <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, { class: "field__tag__category__select-box", id: "category_select" } %>
         </div>
       </div>
+      <div class="field__image">
+        <%= form.label :image, '画像' %>
+        <%= form.file_field :image %>
+      </div>
       <div class="field__blog">
         <%= form.label :content, 'ブログ記事' %>
         <%= form.rich_text_area :content, placeholder: :ブログ本文, class: 'form__text js-text' %>
