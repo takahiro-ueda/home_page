@@ -32,7 +32,7 @@
         <div class="content__main__left__seach">
           <h2>新着投稿</h2>
           <%= form_with(url: search_posts_path, local: true, method: :get, class: "blog__contents__seach__form") do |form| %>
-            <%= form.text_field :keyword, placeholder: "カテゴリを選んでください", class: "blog__contents__seach__form__input" %>
+            <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "blog__contents__seach__form__input" %>
             <%= form.submit "検索", class: "blog__contents__seach__form__btn" %>
             <%= hidden_field_tag :search, true %>
           <% end %>
@@ -97,7 +97,7 @@
 
 <script>
 $(document).on('turbolinks:load', function() {
-  $('.content__image').slick({
+  $('.content__image').not('.slick-initialized').slick({
     // arrows: false,
     // autoplay: true,
     // autoplaySpeed: 0,

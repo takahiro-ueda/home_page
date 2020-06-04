@@ -11,7 +11,6 @@
       <% if @post.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@post.errors.count, "件のエラーにより") %> この投稿は保存できませんでした。</h2>
-
           <ul>
             <% @post.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -62,9 +61,9 @@ $(document).on('turbolinks:load', function() {
   //\nは"改行"に変換して2文字にする。オプションフラグgで文字列の最後まで\nを探し変換する
   var count = $(".js-text").text().replace(/\n/g, "改行").length;
   //残りの入力できる文字数を計算
-  var now_count = 2000 - count;
+  var now_count = 3000 - count;
   //文字数がオーバーしていたら文字色を赤にする
-  if (count > 2000) {
+  if (count > 3000) {
     $(".js-text-count").css("color","red");
   }
   //残りの入力できる文字数を表示
@@ -74,9 +73,9 @@ $(document).on('turbolinks:load', function() {
     // 処理（キーボードを押した時、フォームに残り何文字入力できるかを数えて表示する）
     //フォームのvalueの文字数を数える
     var count = $(this).val().replace(/\n/g, "改行").length;
-    var now_count = 2000 - count;
+    var now_count = 3000 - count;
 
-    if (count > 2000) {
+    if (count > 3000) {
       $(".js-text-count").css("color","red");
     } else {
       $(".js-text-count").css("color","black");
