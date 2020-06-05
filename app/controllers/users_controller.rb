@@ -43,12 +43,6 @@ class UsersController < ApplicationController
 
   def destroy
   end
-
-  def profile
-  end
-
-  def overview
-  end
   
   private
     def set_user
