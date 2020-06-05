@@ -49,6 +49,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: home_page_production
   username: home_page
   password: <%= ENV['HOME_PAGE_DATABASE_PASSWORD'] %>
