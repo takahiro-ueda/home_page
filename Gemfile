@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Use ActiveStorage variant
 gem 'image_processing', '~> 1.2'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
