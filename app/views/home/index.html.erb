@@ -37,10 +37,10 @@
             <%= hidden_field_tag :search, true %>
           <% end %>
         </div>
-        <% @posts.each do |post| %>
+        <% @posts.first(5).each do |post| %>
           <%= render partial: "posts/post", locals: { post: post } %>
         <% end %>
-        <%= paginate(@posts) %>
+        <%# <%= paginate(@posts) %>
       </div>
       <div class="content__main__right">
         <ul class="content__main__right__side">
