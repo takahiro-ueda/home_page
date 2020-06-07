@@ -24,9 +24,8 @@ require("trix")
 require("@rails/actiontext")
 
 
-$(function() {
-  // $('.content__image').not('.slick-initialized').slick({
-  $('.content__image').slick({
+$(document).on('turbolinks:load', function() {
+  $('.content__image').not('.slick-initialized').slick({
     // arrows: false,
     // autoplay: true,
     // autoplaySpeed: 0,
