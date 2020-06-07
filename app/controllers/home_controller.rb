@@ -2,9 +2,10 @@ class HomeController < ApplicationController
 
   def index
     # @posts = Post.all
-    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
+    @posts = Post.where(params[:category_id]).order(created_at: :desc).page(params[:page]).per(5)
+    # @posts = Post.includes(:user)
     # Categoryのデータベースのテーブルから一致するidを取得
-    @category = Category.where(params[:category_id])
+    # @category = Category.where(params[:category_id]).page(params[:page]).per(5).order(created_at: :desc)
     # category_idと紐づく投稿を取得
     # @posts = @category.posts.order(created_at: :desc).all
     @categories = Category.all
