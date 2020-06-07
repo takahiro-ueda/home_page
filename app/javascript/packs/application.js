@@ -25,7 +25,8 @@ require("@rails/actiontext")
 
 
 $(function() {
-  $('.content__image').not('.slick-initialized').slick({
+  // $('.content__image').not('.slick-initialized').slick({
+  $('.content__image').slick({
     // arrows: false,
     // autoplay: true,
     // autoplaySpeed: 0,
