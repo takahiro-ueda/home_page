@@ -15,10 +15,9 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "vue-loader": "^14.2.3",
+    "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
-  },
-  "vue": "vue"
+  }
 }
