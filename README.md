@@ -22,6 +22,11 @@
 ・目標を達成するための日々の積み重ねを記録<br>
 ・Twitterで書ききれなかったことを記すこと<br>
 
+# 開発環境
+言語：HTML・Ruby・Ruby on Rails・JavaScript・jQuery・SQL・Git・ GitHub・SCSS<br>
+ruby '2.5.1'<br>
+rails '~> 6.0'<br>
+
 ## users(ユーザー)
 |Column|Type|Options|
 |------|----|-------|
