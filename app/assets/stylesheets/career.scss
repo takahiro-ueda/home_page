@@ -27,14 +27,6 @@
         letter-spacing: 3px;
         font-size: 40px;
         font-weight: 200px;
-  
-        &:after {
-          content: '';
-          display: block;
-          width: 180px;
-          margin-top: 5px;
-          border-bottom: 1px solid #38aef0;
-        }
       }
       &__field {
         &__time {
