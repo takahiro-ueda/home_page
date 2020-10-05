@@ -8,3 +8,4 @@
 
 program = Category.create(name: "プログラミング")
 running = Category.create(name: "ランニング")
+community = Category.create(name: "副業(ネットビジネス)")
