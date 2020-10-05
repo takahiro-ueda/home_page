@@ -291,6 +291,8 @@ header {
               display: flex;
               font-size: 15px;
               margin-bottom: 10px;
+              word-wrap: break-word;
+              white-space: pre-line;
               a {
                 color: black;
                 position: relative;
@@ -302,7 +304,7 @@ header {
                 bottom: -4px;
                 left: 0;
                 content: '';
-                width: 100%;
+                width: auto;
                 height: 2px;
                 background: lightgreen;
                 transform: scale(0, 1);
