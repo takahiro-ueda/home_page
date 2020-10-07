@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-program = Category.create(name: "プログラミング")
+program_main = Category.create(name: "プログラミング(本業)")
+program_sub = Category.create(name: "プログラミング(副業)")
+program_learn = Category.create(name: "プログラミング(学習)")
 running = Category.create(name: "ランニング")
 community = Category.create(name: "副業(ネットビジネス)")
+other = Category.create(name: "その他")
